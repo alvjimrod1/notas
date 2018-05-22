@@ -6,6 +6,7 @@
 
 var fs = require("fs");
 var path = require("path");
+var config = require ("./config")
 
 function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min;
@@ -14,7 +15,7 @@ function getRandomArbitrary(min, max) {
 describe('Add stat', function() {
     it('should add a new stat', function() {
         browser
-            .get('https://sos1718-09-balramrom-sos171811brr.c9users.io/#!/spanUnivStats')
+            .get(config.getAppUrl())
             .then(function() {
                 element(by.buttonText('All')).click().then(function() {
                     element.all(by.repeater('stat in stats')).then(function(initialStats) {
