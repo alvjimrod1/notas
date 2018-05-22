@@ -55,6 +55,10 @@ angular
                 templateUrl: "../spanishUniversities/integraciones/spanishUniversitiesGraphsApiProxy.html",
                 controller: "spanishUniversitiesGraphsApiProxyCtrl"
             })
+            .when("/spanishUniversitiesInt1", {
+                templateUrl: "../spanishUniversities/integraciones/spa_population_education.html",
+                controller: "spa_population_educationCtrl"
+            })
 
 
             /*RAFA*/
