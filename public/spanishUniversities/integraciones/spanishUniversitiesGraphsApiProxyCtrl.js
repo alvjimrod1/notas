@@ -86,7 +86,7 @@ angular.module("AppManager").controller("spanishUniversitiesGraphsApiProxyCtrl",
                     text: 'Integracion numero universidades en com autonomas/ consumo de ciudades'
                 },
                 subtitle: {
-                    text: '* Jane\'s banana consumption is unknown',
+                    text: '',
                     floating: true,
                     align: 'right',
                     verticalAlign: 'bottom',
