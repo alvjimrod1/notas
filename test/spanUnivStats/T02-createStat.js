@@ -14,7 +14,7 @@ function getRandomArbitrary(min, max) {
 describe('Add stat', function() {
     it('should add a new stat', function() {
         browser
-            .get('https://sos1718-09-brr-sos171811brr.c9users.io/spanUnivStats/')
+            .get('https://sos1718-09-balramrom-sos171811brr.c9users.io/#!/spanUnivStats')
             .then(function() {
                 element(by.buttonText('All')).click().then(function() {
                     element.all(by.repeater('stat in stats')).then(function(initialStats) {
