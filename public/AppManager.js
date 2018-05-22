@@ -56,8 +56,12 @@ angular
                 controller: "spanishUniversitiesGraphsApiProxyCtrl"
             })
             .when("/spanishUniversitiesInt1", {
-                templateUrl: "../spanishUniversities/integraciones/spa_population_education.html",
-                controller: "spa_population_educationCtrl"
+                templateUrl: "../spanishUniversities/integraciones/spa_crime.html",
+                controller: "spa_crimeCtrl"
+            })
+            .when("/spanishUniversitiesInt2", {
+                templateUrl: "../spanishUniversities/integraciones/spa_students.html",
+                controller: "spa_studentsCtrl"
             })
 
 

@@ -2,7 +2,7 @@
 /* global Highcharts */
 
 
-angular.module("AppManager").controller("spa_population_educationCtrl", ["$scope", "$http", "$location", function($scope, $http, $location) {
+angular.module("AppManager").controller("spa_crimeCtrl", ["$scope", "$http", "$location", function($scope, $http, $location) {
     console.log("Graph CORS Controller Initialized!");
     var api = "/api/v2/spanish-universities";
     var api2 = "https://sos1718-08.herokuapp.com/api/v2/crimes-an";
@@ -23,7 +23,7 @@ angular.module("AppManager").controller("spa_population_educationCtrl", ["$scope
 
     var total = [];
     var comunidades = [];
-    var provincesMaria = [];
+    var provincesJoseEnrique = [];
 
     $http.get(api).then(function(response) {
         for (var i = 0; i < response.data.length; i++) {
@@ -50,19 +50,19 @@ angular.module("AppManager").controller("spa_population_educationCtrl", ["$scope
         console.log("COMUNIDADES.UNIQUE " + comunidades.unique());
         console.log("TOTAL " + total);
 
-        /*API MARIA */
+        /*API JoseEnrique */
         $http.get(api2).then(function(response) {
             for (var i = 0; i < response.data.length; i++) {
-                provincesMaria.push(response.data[i].province);
+                provincesJoseEnrique.push(response.data[i].province);
             }
-            console.log("PROVINCES MARIA: " + provincesMaria.sort().unique());
+            console.log("PROVINCES JoseEnrique: " + provincesJoseEnrique.sort().unique());
 
             var int2 = [];
-            for (var i = 0; i < provincesMaria.unique().length; i++) {
+            for (var i = 0; i < provincesJoseEnrique.unique().length; i++) {
                 var cont = 0;
 
                 for (var j = 0; j < response.data.length; j++) {
-                    if (response.data[j].province == provincesMaria.sort().unique()[i] && response.data[j].year == 2007) {
+                    if (response.data[j].province == provincesJoseEnrique.sort().unique()[i] && response.data[j].year == 2007) {
                         if (response.data[j].province = 0) {
                             cont = response.data[j].onecrime;
                         }
@@ -73,11 +73,11 @@ angular.module("AppManager").controller("spa_population_educationCtrl", ["$scope
                 }
 
                 int2.push(cont);
-                total.push([provincesMaria.sort().unique()[i], cont]);
+                total.push([provincesJoseEnrique.sort().unique()[i], cont]);
             }
 
             console.log("INT2 = " + int2);
-            console.log(provincesMaria.unique());
+            console.log(provincesJoseEnrique.unique());
             console.log(total);
 
             console.log("tmaño de alvaro : " + int.length);
@@ -94,14 +94,14 @@ angular.module("AppManager").controller("spa_population_educationCtrl", ["$scope
 
                 data: {
                     columns: [
-                        ['Alvaro'].concat(int), ['Maria'].concat(aux).concat(int2)
+                        ['Alvaro'].concat(int), ['JoseEnrique'].concat(aux).concat(int2)
 
                     ]
                 },
                 axis: {
                     x: {
                         type: 'category',
-                        categories: comunidades.unique().concat(provincesMaria.unique())
+                        categories: comunidades.unique().concat(provincesJoseEnrique.unique())
                     }
                 },
 
