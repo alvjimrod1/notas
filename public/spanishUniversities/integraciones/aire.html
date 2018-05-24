@@ -26,19 +26,26 @@
     </div>
 </nav>
 <center>
-    <h1><strong>Highcharts Integracion API Tiempo por coordenadas</strong></h1>
+    <h1><strong>Highcharts Integracion API Calidad del aire en Londres</strong></h1>
 </center>
 <!--  CHARTS  -->
-<div class="row">
-    <div class="col">
-        Por defecto, Sevilla.
-        <td> <input class="form-control" style="text-align:center" ng-model="lat" value="Latitud" /></td>
-        <td> <input class="form-control" style="text-align:center" ng-model="long" placeholder="Longitud" /></td>
+<div align='center'><b>PUREZA DEL AIRE DE HOY</b></div>
+<div class="chart-block" style="padding:2px" align='center'>
 
-    </div>
+
+
+    <a width: "400px"><b align: 'center'>nO2 Band</b></a>
+    <div id="thermometer1" style="vertical-align: middle; display: inline-block; width: 1000px; height: 40px;"></div><br />
+    <b align: 'center'>o3 Band_</b>
+    <div id="thermometer2" style="vertical-align: middle; display: inline-block; width: 1000px; height: 40px;"></div><br />
+    <b align: 'center'>pM10Band</b>
+    <div id="thermometer3" style="vertical-align: middle; display: inline-block; width: 1000px; height: 40px;"></div><br />
+    <b align: 'center'>pM25Band</b>
+    <div id="thermometer4" style="vertical-align: middle; display: inline-block; width: 1000px; height: 40px;"></div><br />
+    <b align: 'center'>sO2BAnd</b>
+    <div id="thermometer5" style="vertical-align: middle; display: inline-block; width: 1000px; height: 40px;"></div><br />
+
+
+
+
 </div>
-</div>
-<div>
-    <button class="button btn-sm btn-primary" ng-click="getWeather()">Consultar</button>
-</div>
-<div id="chartdiv" style="margin: 0 auto; width: 1000px; height: 500px;"></div>
