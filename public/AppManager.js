@@ -63,6 +63,10 @@ angular
                 templateUrl: "../spanishUniversities/integraciones/spa_students.html",
                 controller: "spa_studentsCtrl"
             })
+            .when("/spanishUniversitiesInt3", {
+                templateUrl: "../spanishUniversities/integraciones/starWars.html",
+                controller: "starWarsCtrl"
+            })
 
 
             /*RAFA*/
