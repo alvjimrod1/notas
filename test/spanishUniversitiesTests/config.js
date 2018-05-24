@@ -14,6 +14,6 @@ exports.config = {
 }
 
 exports.getAppUrl = function() {
-    console.log("https://" + browser.params.host + "/#!/basketball-stats");
-    return "https://" + browser.params.host + "/#!/basketball-stats";
+    console.log("https://" + browser.params.host + "/#!/spanishUniversities");
+    return "https://" + browser.params.host + "/#!/spanishUniversities";
 }

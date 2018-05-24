@@ -71,6 +71,10 @@ angular
                 templateUrl: "../spanishUniversities/integraciones/tiempo.html",
                 controller: "tiempoCtrl"
             })
+            .when("/spanishUniversitiesInt5", {
+                templateUrl: "../spanishUniversities/integraciones/aire.html",
+                controller: "aireCtrl"
+            })
 
 
             /*RAFA*/

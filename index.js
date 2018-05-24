@@ -44,6 +44,16 @@ app.use("/proxyAJR/", function(req, res) {
     console.log('piped: ' + req.url);
     req.pipe(request(url)).pipe(res);
 });
+
+var apiServerHost2 = "http://www.etnassoft.com";
+
+app.use("/proxyAJR1/", function(req, res) {
+
+    var url = apiServerHost2 + req.url;
+
+    console.log('piped: ' + req.url);
+    req.pipe(request(url)).pipe(res);
+});
 /*----------*/
 app.use("/", express.static(path.join(__dirname, "public")));
 

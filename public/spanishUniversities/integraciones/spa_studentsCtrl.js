@@ -74,10 +74,9 @@ angular.module("AppManager").controller("spa_studentsCtrl", ["$scope", "$http", 
                 var data = google.visualization.arrayToDataTable(googleChartData);
 
                 var options = {
-                    title: 'Correlation between life expectancy, fertility rate ' +
-                        'and population of some world countries (2010)',
-                    hAxis: { title: 'Life Expectancy' },
-                    vAxis: { title: 'Fertility Rate' },
+                    title: 'Correlation between communities and studies',
+                    hAxis: { title: 'Illiterate rate' },
+                    vAxis: { title: 'High education rate' },
                     bubble: { textStyle: { fontSize: 11 } }
                 };
 
