@@ -15,73 +15,91 @@ angular.module("AppManager").controller("tiempoCtrl", ["$scope", "$http", "$loca
 
         console.log(response.data.query.results.channel.item.forecast);
 
+
+        var res = [];
+        var responseData = response.data.query.results.channel.item.forecast;
+        responseData.map(function(i) {
+            res.push([i['date'], i['high'], i['low']]);
+        });
+        /*
+        console.log("RES");
+        console.log(res);
+        console.log("FECHA")
+        console.log(res[0][0])
+        */
+        //   var fechas = ["date" +:+res[0][0]];
+
         /* ESPACIO PARA IMPLEMENTAR LA CHART*/
         var chart = AmCharts.makeChart("chartdiv", {
             "theme": "light",
             "type": "serial",
             "dataProvider": [{
-                "country": "USAz",
-                "year2004": 3.5,
-                "year2005": 4.2
+                "date": res[0][0],
+                "min": res[0][2],
+                "max": res[0][1]
             }, {
-                "country": "UK",
-                "year2004": 1.7,
-                "year2005": 3.1
+                "date": res[1][0],
+                "min": res[1][2],
+                "max": res[1][1]
             }, {
-                "country": "Canada",
-                "year2004": 2.8,
-                "year2005": 2.9
+                "date": res[2][0],
+                "min": res[2][2],
+                "max": res[2][1]
             }, {
-                "country": "Japan",
-                "year2004": 2.6,
-                "year2005": 2.3
+                "date": res[3][0],
+                "min": res[3][2],
+                "max": res[3][1]
             }, {
-                "country": "France",
-                "year2004": 1.4,
-                "year2005": 2.1
+                "date": res[4][0],
+                "min": res[4][2],
+                "max": res[4][1]
             }, {
-                "country": "Brazil",
-                "year2004": 2.6,
-                "year2005": 4.9
+                "date": res[5][0],
+                "min": res[5][2],
+                "max": res[5][1]
             }, {
-                "country": "Russia",
-                "year2004": 6.4,
-                "year2005": 7.2
+                "date": res[6][0],
+                "min": res[6][2],
+                "max": res[6][1]
             }, {
-                "country": "India",
-                "year2004": 8,
-                "year2005": 7.1
+                "date": res[7][0],
+                "min": res[7][2],
+                "max": res[7][1]
             }, {
-                "country": "China",
-                "year2004": 9.9,
-                "year2005": 10.1
+                "date": res[8][0],
+                "min": res[8][2],
+                "max": res[8][1]
+            }, {
+                "date": res[9][0],
+                "min": res[9][2],
+                "max": res[9][1]
             }],
             "valueAxes": [{
                 "stackType": "3d",
-                "unit": "%",
+                "unit": "ºC",
                 "position": "left",
-                "title": "GDP growth rate",
+                "title": "Temperatures",
             }],
             "startDuration": 1,
             "graphs": [{
-                "balloonText": "GDP grow in [[category]] (2004): <b>[[value]]</b>",
+                "balloonText": "Min temperature on [[category]]:  <b>[[value]]</b>",
                 "fillAlphas": 0.9,
                 "lineAlpha": 0.2,
-                "title": "2004",
+                "title": "Min",
                 "type": "column",
-                "valueField": "year2004"
+                "valueField": "min"
             }, {
-                "balloonText": "GDP grow in [[category]] (2005): <b>[[value]]</b>",
+                "balloonText": "Max temperature on [[category]]:  <b>[[value]]</b>",
                 "fillAlphas": 0.9,
                 "lineAlpha": 0.2,
-                "title": "2005",
+                "title": "Max",
                 "type": "column",
-                "valueField": "year2005"
+                "valueField": "max"
             }],
             "plotAreaFillAlphas": 0.1,
             "depth3D": 60,
             "angle": 30,
-            "categoryField": "country",
+            "categoryField": "date",
             "categoryAxis": {
                 "gridPosition": "start"
             },
