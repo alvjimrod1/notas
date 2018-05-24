@@ -4,7 +4,6 @@
 
 angular.module("AppManager").controller("starWarsCtrl", ["$scope", "$http", "$location", function($scope, $http, $location) {
     console.log("Graph CORS Controller Initialized!");
-    var api = "/api/v2/spanish-universities";
     var api2 = "https://swapi.co/api/people";
 
 
@@ -20,26 +19,22 @@ angular.module("AppManager").controller("starWarsCtrl", ["$scope", "$http", "$lo
         responseData.map(function(i) {
             res.push([i['name'], parseInt(i['height'])]);
         });
-        console.log("Aqui vemos el res")
+        console.log("Aqui vemos el res");
         console.log(res);
 
 
         for (var h = 0; h < res.length; h++) {
             starWarsData.push(res[h]);
         }
-        console.log("Aqui el starData")
+        console.log("Aqui el starData");
         console.log(starWarsData);
 
 
-        var starWarsDataOrdenado = [];
-        starWarsDataOrdenado = starWarsData.sort(function(a, b) {
-            return (a.slice(1) - b.slice(1));
-        })
-        //    console.log(starWarsData[0])
-
         var chart = c3.generate({
             data: {
-                columns: starWarsDataOrdenado.reverse(),
+                columns: starWarsData.sort(function(a, b) {
+                    return (a.slice(1) - b.slice(1));
+                }).reverse(),
                 type: 'gauge',
                 onclick: function(d, i) { console.log("onclick", d, i); },
                 onmouseover: function(d, i) { console.log("onmouseover", d, i); },
