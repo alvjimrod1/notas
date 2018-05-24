@@ -9,11 +9,13 @@ exports.config = {
     },
     params: {
         host: 'localhost',
-        port: '8080'
+        port: '8080',
+        cadena: "/#!/spanishUniversities"
+
     }
-}
+};
 
 exports.getAppUrl = function() {
-    console.log("https://" + browser.params.host + "/#!/spanishUniversities");
-    return "https://" + browser.params.host + "/#!/spanishUniversities";
-}
+
+    return "http://" + browser.params.host + ":" + browser.params.port + browser.params.cadena;
+};

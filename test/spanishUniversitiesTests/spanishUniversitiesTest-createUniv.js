@@ -3,6 +3,7 @@
 /*global element*/
 /*global by*/
 /*global config*/
+var config = require("./config");
 describe('Add an univ', function() {
     it('should add a new university', function() {
         browser

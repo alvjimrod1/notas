@@ -3,6 +3,8 @@
 /*global element*/
 /*global by*/
 /*global config*/
+
+var config = require("./config");
 describe('Data is loaded', function() {
     it('should show some spanish universities', function() {
         browser
