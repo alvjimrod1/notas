@@ -8,13 +8,10 @@ angular.module("AppManager").controller("starWarsCtrl", ["$scope", "$http", "$lo
     var api2 = "https://swapi.co/api/people";
 
 
-    var starWarsData = [
-     
-    ];
+    var starWarsData = [];
+
     $http.get(api2).then(function(response) {
-        var res = [
-           
-        ]
+        var res = [];
         var responseData = response.data.results;
 
         console.log(responseData);
@@ -23,55 +20,54 @@ angular.module("AppManager").controller("starWarsCtrl", ["$scope", "$http", "$lo
         responseData.map(function(i) {
             res.push([i['name'], parseInt(i['height'])]);
         });
+        console.log("Aqui vemos el res")
         console.log(res);
 
 
         for (var h = 0; h < res.length; h++) {
             starWarsData.push(res[h]);
         }
+        console.log("Aqui el starData")
         console.log(starWarsData);
+
+
+        var starWarsDataOrdenado = [];
+        starWarsDataOrdenado = starWarsData.sort(function(a, b) {
+            return (a.slice(1) - b.slice(1));
+        })
+        //    console.log(starWarsData[0])
 
         var chart = c3.generate({
             data: {
-                columns: [
-                    //['data', 91.4],['data2',34.2]
-                    starWarsData[0],starWarsData[1],starWarsData[2]
-                    
-                  //  starWarsData
-
-                ],
+                columns: starWarsDataOrdenado.reverse(),
                 type: 'gauge',
                 onclick: function(d, i) { console.log("onclick", d, i); },
                 onmouseover: function(d, i) { console.log("onmouseover", d, i); },
                 onmouseout: function(d, i) { console.log("onmouseout", d, i); }
             },
             gauge: {
-                //        label: {
-                //            format: function(value, ratio) {
-                //                return value;
-                //            },
-                //            show: false // to turn off the min/max labels.
-                //        },
+                label: {
+                    format: function(value, ratio) {
+                        return value;
+                    },
+                    //            show: false // to turn off the min/max labels.
+                },
                 //    min: 0, // 0 is default, //can handle negative min e.g. vacuum / voltage / current flow / rate of change
-                max: 200, // 100 is default
+                max: 202, // 100 is default
                 //   units: ' %',
-                //    width: 39 // for adjusting arc thickness
+                width: 150 // for adjusting arc thickness
             },
             color: {
-                pattern: ['#FF0000', '#F97600', '#F6C600', '#60B044'], // the three color levels for the percentage values.
+                pattern: ['#088A68', '#8181F7', '#FF0000', '#F97600', '#F6C600', '#60B044', '#0040FF', '#FE2EF7', '#848484'], // the three color levels for the percentage values.
                 threshold: {
-                    //            unit: 'value', // percentage is default
-                    //            max: 200, // 100 is default
-                    values: [30, 60, 90, 100]
+
+                    values: [100, 150, 160, 170, 180, 190, 200, 210]
                 }
             },
             size: {
-                height: 180
+                height: 300
             }
         });
-
-
-
 
 
 
