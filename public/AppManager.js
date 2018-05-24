@@ -67,6 +67,10 @@ angular
                 templateUrl: "../spanishUniversities/integraciones/starWars.html",
                 controller: "starWarsCtrl"
             })
+            .when("/spanishUniversitiesInt4", {
+                templateUrl: "../spanishUniversities/integraciones/tiempo.html",
+                controller: "tiempoCtrl"
+            })
 
 
             /*RAFA*/
