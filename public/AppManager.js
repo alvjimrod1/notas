@@ -79,6 +79,10 @@ angular
                 templateUrl: "../spanishUniversities/integraciones/cervezas.html",
                 controller: "cervezasCtrl"
             })
+            .when("/spanishUniversitiesInt7", {
+                templateUrl: "../spanishUniversities/integraciones/bicis.html",
+                controller: "bicisCtrl"
+            })
 
             /*RAFA*/
             .when("/openSourceContests", {
