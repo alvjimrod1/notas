@@ -76,7 +76,7 @@ angular.module("AppManager").controller("bicisCtrl", ["$scope", "$http", "$locat
 
             for (var i = 0; i < res.length; i++) {
                 // if (res[i][0] == "Onroll")
-                a.push({ "latitude": res[i][1], "longitude": res[i][2], "imageURL": "https://cdn.icon-icons.com/icons2/38/PNG/512/bicycle_bike_4531.png", "width": 30, "height": 30 });
+                a.push({ "latitude": res[i][1], "longitude": res[i][2], "imageURL": "https://cdn.icon-icons.com/icons2/38/PNG/512/bicycle_bike_4531.png", "width": 35, "height": 35, "label": res[i][0] });
             }
 
             /*CHARTS*/
