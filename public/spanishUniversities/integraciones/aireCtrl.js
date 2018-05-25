@@ -25,13 +25,15 @@ angular.module("AppManager").controller("aireCtrl", ["$scope", "$http", "$locati
         if (res[1][0] == "Low") nO2Band = 25;
         else if (res[1][0] == "Moderate") nO2Band = 50;
         else if (res[1][0] == "High") nO2Band = 75;
-        console.log("nO2Band: " + nO2Band)
+        console.log("nO2Band: " + nO2Band);
+
         var o3Band = 0;
         if (res[1][1] == "Low") o3Band = 25;
         else if (res[1][1] == "Moderate") o3Band = 50;
         else if (res[1][1] == "High") o3Band = 75;
-        console.log("o3Band: " + o3Band)
+        console.log("o3Band: " + o3Band);
         var pM10Band = 0;
+
         if (res[1][2] == "Low") pM10Band = 25;
         else if (res[1][2] == "Moderate") pM10Band = 50;
         else if (res[1][2] == "High") pM10Band = 75;
