@@ -82,6 +82,36 @@ var initialUniversities = [{
         "type": "privada",
         "nameUniversity": "universidad abad oliva ceu"
     }, {
+        "autCommunity": "ES-AN",
+        "yearFund": "1905",
+        "headquar": "sevilla",
+        "type": "publica",
+        "nameUniversity": "universidad de sevilla"
+    }, {
+        "autCommunity": "ES-AN",
+        "yearFund": "2011",
+        "headquar": "sevilla",
+        "type": "privada",
+        "nameUniversity": "universidad loyola andalucia"
+    }, {
+        "autCommunity": "ES-AN",
+        "yearFund": "1998",
+        "headquar": "cordoba",
+        "type": "privada",
+        "nameUniversity": "universidad privada de cordoba"
+    }, {
+        "autCommunity": "ES-AN",
+        "yearFund": "2013",
+        "headquar": "cadiz",
+        "type": "publica",
+        "nameUniversity": "universidad publica de cadiz"
+    }, {
+        "autCommunity": "ES-AN",
+        "yearFund": "1999",
+        "headquar": "cordoba",
+        "type": "publica",
+        "nameUniversity": "universidad publica de cordoba"
+    }, {
         "autCommunity": "ES-PV",
         "yearFund": "1923",
         "headquar": "bilbao",
