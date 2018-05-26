@@ -1,0 +1,444 @@
+{
+	"info": {
+		"_postman_id": "387e27e9-eb36-4ac4-9e63-495ddfb87fb2",
+		"name": "SOS1718-09-span-univ-stats-L07",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://sos1718-09.herokuapp.com/api/v1/span-univ-stats",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dda1c036-fe8d-45e8-b3f5-ed59209ec94f",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Get should return 12 stats\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length).to.eql(12);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"autCommunity\": \"asturias\",\n        \"year\": 2015,\n        \"enrolledNumber\": 23074,\n        \"degree\": 16973,\n        \"master\": 1283,\n        \"firstSecondCycle\": 4818\n    }"
+				},
+				"url": "http://sos1718-09.herokuapp.com/api/v1/span-univ-stats"
+			},
+			"response": []
+		},
+		{
+			"name": "http://sos1718-09.herokuapp.com/api/v1/span-univ-stats",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f72ad0d3-3f5c-46a8-b462-afb699289506",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 409\", function () {",
+							"    pm.response.to.have.status(409);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"autCommunity\": \"asturias\",\n        \"year\": 2015,\n        \"enrolledNumber\": 23074,\n        \"degree\": 16973,\n        \"master\": 1283,\n        \"firstSecondCycle\": 4818\n    }"
+				},
+				"url": "http://sos1718-09.herokuapp.com/api/v1/span-univ-stats"
+			},
+			"response": []
+		},
+		{
+			"name": "http://sos1718-09.herokuapp.com/api/v1/span-univ-stats",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "86f540f9-a1b8-4bd8-b487-12baeec6c830",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([201,202]);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"autCommunity\": \"asturias\",\n        \"year\": 2014,\n        \"enrolledNumber\": 23074,\n        \"degree\": 16973,\n        \"master\": 1283,\n        \"firstSecondCycle\": 4818\n    }"
+				},
+				"url": "http://sos1718-09.herokuapp.com/api/v1/span-univ-stats"
+			},
+			"response": []
+		},
+		{
+			"name": "http://sos1718-09.herokuapp.com/api/v1/span-univ-stats/andalucia/2016",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "797898d3-b6d1-4394-aeb2-5f0e3134d531",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"autCommunity\": \"asturias\",\n        \"year\": 2014,\n        \"enrolledNumber\": 23074,\n        \"degree\": 16973,\n        \"master\": 1283,\n        \"firstSecondCycle\": 4818\n    }"
+				},
+				"url": "http://sos1718-09.herokuapp.com/api/v1/span-univ-stats/andalusia/2016"
+			},
+			"response": []
+		},
+		{
+			"name": "http://sos1718-09.herokuapp.com/api/v1/span-univ-stats/andalucia/2015",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "780f8d6e-6edf-4340-9b21-26a88fdbf745",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"andalusia\");",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"2015\");",
+							"});",
+							"",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"autCommunity\": \"asturias\",\n        \"year\": 2014,\n        \"enrolledNumber\": 23074,\n        \"degree\": 16973,\n        \"master\": 1283,\n        \"firstSecondCycle\": 4818\n    }"
+				},
+				"url": "http://sos1718-09.herokuapp.com/api/v1/span-univ-stats/andalusia/2015"
+			},
+			"response": []
+		},
+		{
+			"name": "http://sos1718-09.herokuapp.com/api/v1/span-univ-stats/asturias/2014",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9383be1d-1cd4-4e35-9c26-79f8b7a01b11",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"autCommunity\": \"asturias\",\n        \"year\": 2014,\n        \"enrolledNumber\": 23074,\n        \"degree\": 16973,\n        \"master\": 1283,\n        \"firstSecondCycle\": 4818\n    }"
+				},
+				"url": "http://sos1718-09.herokuapp.com/api/v1/span-univ-stats/asturias/2014"
+			},
+			"response": []
+		},
+		{
+			"name": "http://sos1718-09.herokuapp.com/api/v1/span-univ-stats/asturias/2015",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "19a09eed-f355-430d-b99a-77b502f36e3b",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"autCommunity\": \"asturias\",\n        \"year\": 2014,\n        \"enrolledNumber\": 23074,\n        \"degree\": 16973,\n        \"master\": 1283,\n        \"firstSecondCycle\": 4818\n    }"
+				},
+				"url": "http://sos1718-09.herokuapp.com/api/v1/span-univ-stats/asturias/2015"
+			},
+			"response": []
+		},
+		{
+			"name": "http://sos1718-09.herokuapp.com/api/v1/span-univ-stats/asturias/2015",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7e096c4a-6c2f-4ef4-9ce4-72ec2d33be51",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"autCommunity\": \"asturias\",\n        \"year\": 2015,\n        \"enrolledNumber\": 23074,\n        \"degree\": 16973,\n        \"master\": 1285,\n        \"firstSecondCycle\": 4816\n    }"
+				},
+				"url": "http://sos1718-09.herokuapp.com/api/v1/span-univ-stats/asturias/2015"
+			},
+			"response": []
+		},
+		{
+			"name": "http://sos1718-09.herokuapp.com/api/v1/span-univ-stats/asturias/2015",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1d6c6da4-d4bf-4f94-b366-02e293961205",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {",
+							"    pm.response.to.have.status(405);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"autCommunity\": \"asturias\",\n        \"year\": 2015,\n        \"enrolledNumber\": 23074,\n        \"degree\": 16973,\n        \"master\": 1285,\n        \"firstSecondCycle\": 4816\n    }"
+				},
+				"url": "http://sos1718-09.herokuapp.com/api/v1/span-univ-stats/asturias/2015"
+			},
+			"response": []
+		},
+		{
+			"name": "http://sos1718-09.herokuapp.com/api/v1/span-univ-stats/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "25e0ffe0-b067-4d45-a274-67244bddcc81",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {",
+							"    pm.response.to.have.status(405);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"autCommunity\": \"asturias\",\n        \"year\": 2015,\n        \"enrolledNumber\": 23074,\n        \"degree\": 16973,\n        \"master\": 1285,\n        \"firstSecondCycle\": 4816\n    }"
+				},
+				"url": "http://sos1718-09.herokuapp.com/api/v1/span-univ-stats"
+			},
+			"response": []
+		},
+		{
+			"name": "http://sos1718-09.herokuapp.com/api/v1/span-univ-stats",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9e5d96c1-924b-4e82-9b96-78ef43b849aa",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"autCommunity\": \"asturias\",\n        \"year\": 2013,\n        \"enrolledNumber\": 23074,\n        \"degree\": 16973,\n        \"master\": 1285,\n        \"firstSecondCycle\": 4816,\n        \"Inesperated field\": 555\n    }"
+				},
+				"url": "http://sos1718-09.herokuapp.com/api/v1/span-univ-stats"
+			},
+			"response": []
+		},
+		{
+			"name": "http://sos1718-09.herokuapp.com/api/v1/span-univ-stats/andalucia/2015",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "80b482be-b913-42c7-a393-94061b919253",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"autCommunity\": \"andalusia\",\n        \"year\": 2015,\n        \"enrolledNumber\": 23074,\n        \"degree\": 16973,\n        \"master\": 1285\n    }"
+				},
+				"url": "http://sos1718-09.herokuapp.com/api/v1/span-univ-stats/andalusia/2015"
+			},
+			"response": []
+		},
+		{
+			"name": "http://sos1718-09.herokuapp.com/api/v1/span-univ-stats",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7c1584d8-de3d-401f-b68e-ef5275123229",
+						"type": "text/javascript",
+						"exec": [
+							"",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"autCommunity\": \"andalucia\",\n        \"year\": 2015,\n        \"enrolledNumber\": 23074,\n        \"degree\": 16973,\n        \"master\": 1285\n    }"
+				},
+				"url": "http://sos1718-09.herokuapp.com/api/v1/span-univ-stats"
+			},
+			"response": []
+		}
+	]
+}
