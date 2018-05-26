@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "091b173e-fa70-4a07-9b0a-7044781e9282",
 		"name": "SOS1718-09-spanish-universities",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
@@ -37,22 +37,7 @@
 							"mode": "raw",
 							"raw": "{\n        \"autCommunity\": \"ES-CT\",\n        \"yearFund\": \"2003\",\n        \"headquar\": \"barcelona\",\n        \"type\": \"privada\",\n        \"nameUniversity\": \"universidad abad oliva ceu\"\n    }"
 						},
-						"url": {
-							"raw": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/ES-CT/1542",
-							"protocol": "https",
-							"host": [
-								"sos1718-09",
-								"herokuapp",
-								"com"
-							],
-							"path": [
-								"api",
-								"v1",
-								"spanish-universities",
-								"ES-CT",
-								"1542"
-							]
-						}
+						"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/ES-CT/1542"
 					},
 					"response": []
 				},
@@ -84,21 +69,7 @@
 							"mode": "raw",
 							"raw": "{\n        \"autCommunity\": \"ES-CT\",\n        \"yearFund\": \"2003\",\n        \"headquar\": \"barcelona\",\n        \"type\": \"privada\",\n        \"nameUniversity\": \"universidad abad oliva ceu\"\n    }"
 						},
-						"url": {
-							"raw": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/",
-							"protocol": "https",
-							"host": [
-								"sos1718-09",
-								"herokuapp",
-								"com"
-							],
-							"path": [
-								"api",
-								"v1",
-								"spanish-universities",
-								""
-							]
-						}
+						"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/"
 					},
 					"response": []
 				},
@@ -130,21 +101,7 @@
 							"mode": "raw",
 							"raw": "{\n        \"autCommunity\": \"ES-CT\",\n        \"yearFund\": \"2003\",\n        \"headquar\": \"barcelona\",\n        \"nameUniversity\": \"universidad abad oliva ceu\"\n    }"
 						},
-						"url": {
-							"raw": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/",
-							"protocol": "https",
-							"host": [
-								"sos1718-09",
-								"herokuapp",
-								"com"
-							],
-							"path": [
-								"api",
-								"v1",
-								"spanish-universities",
-								""
-							]
-						}
+						"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/"
 					},
 					"response": []
 				},
@@ -176,22 +133,7 @@
 							"mode": "raw",
 							"raw": "{\n        \"autCommunity\": \"andalucia\",\n        \"yearFund\": \"1541\",\n        \"headquar\": \"huelva\",\n        \"nameUniversity\": \"universidad de huelva\"\n    }"
 						},
-						"url": {
-							"raw": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/ES-CTT/1543",
-							"protocol": "https",
-							"host": [
-								"sos1718-09",
-								"herokuapp",
-								"com"
-							],
-							"path": [
-								"api",
-								"v1",
-								"spanish-universities",
-								"ES-CTT",
-								"1543"
-							]
-						}
+						"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/ES-CTT/1543"
 					},
 					"response": []
 				},
@@ -223,22 +165,7 @@
 							"mode": "raw",
 							"raw": "{\n        \"autCommunity\": \"ES-CT\",\n        \"yearFund\": \"2003\",\n        \"headquar\": \"barcelona\",\n        \"type\": \"privada\",\n        \"nameUniversity\": \"universidad abad oliva ceu\"\n    }"
 						},
-						"url": {
-							"raw": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/aragon/1543",
-							"protocol": "https",
-							"host": [
-								"sos1718-09",
-								"herokuapp",
-								"com"
-							],
-							"path": [
-								"api",
-								"v1",
-								"spanish-universities",
-								"aragon",
-								"1543"
-							]
-						}
+						"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/aragon/1543"
 					},
 					"response": []
 				},
@@ -270,21 +197,7 @@
 							"mode": "raw",
 							"raw": "{\n        \"autCommunity\": \"ES-CT\",\n        \"yearFund\": \"2003\",\n        \"headquar\": \"barcelona\",\n        \"type\": \"privada\",\n        \"nameUniversity\": \"universidad abad oliva ceu\"\n    }"
 						},
-						"url": {
-							"raw": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/",
-							"protocol": "https",
-							"host": [
-								"sos1718-09",
-								"herokuapp",
-								"com"
-							],
-							"path": [
-								"api",
-								"v1",
-								"spanish-universities",
-								""
-							]
-						}
+						"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/"
 					},
 					"response": []
 				}
@@ -311,21 +224,7 @@
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"url": {
-					"raw": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/",
-					"protocol": "https",
-					"host": [
-						"sos1718-09",
-						"herokuapp",
-						"com"
-					],
-					"path": [
-						"api",
-						"v1",
-						"spanish-universities",
-						""
-					]
-				}
+				"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/"
 			},
 			"response": []
 		},
@@ -357,22 +256,7 @@
 					"mode": "raw",
 					"raw": "{\n        \"autCommunity\": \"ES-AN\",\n        \"yearFund\": \"2008\",\n        \"headquar\": \"sevilla\",\n        \"type\": \"publica\",\n        \"nameUniversity\": \"escuela técnica superior ing informatica\"\n    }"
 				},
-				"url": {
-					"raw": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/ES-AN/2008",
-					"protocol": "https",
-					"host": [
-						"sos1718-09",
-						"herokuapp",
-						"com"
-					],
-					"path": [
-						"api",
-						"v1",
-						"spanish-universities",
-						"ES-AN",
-						"2008"
-					]
-				}
+				"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/ES-AN/2008"
 			},
 			"response": []
 		},
@@ -397,21 +281,7 @@
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"url": {
-					"raw": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/",
-					"protocol": "https",
-					"host": [
-						"sos1718-09",
-						"herokuapp",
-						"com"
-					],
-					"path": [
-						"api",
-						"v1",
-						"spanish-universities",
-						""
-					]
-				}
+				"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/"
 			},
 			"response": []
 		},
@@ -443,22 +313,7 @@
 					"mode": "raw",
 					"raw": " {\n        \"autCommunity\": \"ES-AN\",\n        \"yearFund\": \"1980\",\n        \"headquar\": \"jaen\",\n        \"type\": \"publica\",\n        \"nameUniversity\": \"universidad publica de jaen2\"\n    }"
 				},
-				"url": {
-					"raw": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/ES-AN/1980",
-					"protocol": "https",
-					"host": [
-						"sos1718-09",
-						"herokuapp",
-						"com"
-					],
-					"path": [
-						"api",
-						"v1",
-						"spanish-universities",
-						"ES-AN",
-						"1980"
-					]
-				}
+				"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/ES-AN/1980"
 			},
 			"response": []
 		},
@@ -490,22 +345,7 @@
 					"mode": "raw",
 					"raw": " {\n        \"autCommunity\": \"ES-AN\",\n        \"yearFund\": \"1980\",\n        \"headquar\": \"jaen\",\n        \"type\": \"publica\",\n        \"nameUniversity\": \"universidad publica de jaen2\"\n    }"
 				},
-				"url": {
-					"raw": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/ES-AN/1980",
-					"protocol": "https",
-					"host": [
-						"sos1718-09",
-						"herokuapp",
-						"com"
-					],
-					"path": [
-						"api",
-						"v1",
-						"spanish-universities",
-						"ES-AN",
-						"1980"
-					]
-				}
+				"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/ES-AN/1980"
 			},
 			"response": []
 		},
@@ -537,21 +377,7 @@
 					"mode": "raw",
 					"raw": "{\n        \"autCommunity\": \"aragon\",\n        \"yearFund\": \"1542\",\n        \"headquar\": \"zaragoza2\",\n        \"type\": \"privada2\",\n        \"nameUniversity\": \"universidad de zaragoza2\"\n    }"
 				},
-				"url": {
-					"raw": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/",
-					"protocol": "https",
-					"host": [
-						"sos1718-09",
-						"herokuapp",
-						"com"
-					],
-					"path": [
-						"api",
-						"v1",
-						"spanish-universities",
-						""
-					]
-				}
+				"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/"
 			},
 			"response": []
 		},
@@ -583,21 +409,7 @@
 					"mode": "raw",
 					"raw": ""
 				},
-				"url": {
-					"raw": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/",
-					"protocol": "https",
-					"host": [
-						"sos1718-09",
-						"herokuapp",
-						"com"
-					],
-					"path": [
-						"api",
-						"v1",
-						"spanish-universities",
-						""
-					]
-				}
+				"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/"
 			},
 			"response": []
 		},
@@ -621,61 +433,7 @@
 				"method": "GET",
 				"header": [],
 				"body": {},
-				"url": {
-					"raw": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/loadInitialData",
-					"protocol": "https",
-					"host": [
-						"sos1718-09",
-						"herokuapp",
-						"com"
-					],
-					"path": [
-						"api",
-						"v1",
-						"spanish-universities",
-						"loadInitialData"
-					]
-				},
-				"description": "LoadInitialDAta"
-			},
-			"response": []
-		},
-		{
-			"name": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "917e2874-50ec-4858-82eb-1813f55afe35",
-						"type": "text/javascript",
-						"exec": [
-							"var jsonData = JSON.parse(responseBody);",
-							"tests[\"Array should be more than 13\"] = (jsonData.length >= 13);",
-							"",
-							""
-						]
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/",
-					"protocol": "https",
-					"host": [
-						"sos1718-09",
-						"herokuapp",
-						"com"
-					],
-					"path": [
-						"api",
-						"v1",
-						"spanish-universities",
-						""
-					]
-				},
+				"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/loadInitialData",
 				"description": "LoadInitialDAta"
 			},
 			"response": []
