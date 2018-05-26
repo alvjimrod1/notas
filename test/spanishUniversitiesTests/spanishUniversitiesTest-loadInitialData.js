@@ -13,7 +13,7 @@ describe('Data is loaded', function() {
                 element
                     .all(by.repeater('univ in univs'))
                     .then(function(univs) {
-                        expect(univs.length).toBeGreaterThan(4);
+                        expect(univs.length).toBeGreaterThan(0);
                     });
 
             });

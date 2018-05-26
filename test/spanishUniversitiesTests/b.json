@@ -1,0 +1,464 @@
+{
+	"info": {
+		"_postman_id": "9ce6c9fb-ad4d-4f91-a5bd-413cb4c5aff4",
+		"name": "SOS1718-09-spanish-universities copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4889178f-6472-4c15-b3d2-44a2c9e845e9",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"autCommunity\": \"ES-CT\",\n        \"yearFund\": \"2003\",\n        \"headquar\": \"barcelona\",\n        \"type\": \"privada\",\n        \"nameUniversity\": \"universidad abad oliva ceu\"\n    }"
+				},
+				"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/ES-CT/1542"
+			},
+			"response": []
+		},
+		{
+			"name": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "346c8af7-ff45-4c60-866b-d92c97bd6f49",
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Array should be more than 12\"] = (jsonData.length >= 12);",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities"
+			},
+			"response": []
+		},
+		{
+			"name": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/ES-AN/2008",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dfb13552-4809-436c-9eb8-eda4d333ea0a",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"autCommunity\": \"ES-AN\",\n        \"yearFund\": \"2008\",\n        \"headquar\": \"sevilla\",\n        \"type\": \"publica\",\n        \"nameUniversity\": \"escuela técnica superior ing informatica\"\n    }"
+				},
+				"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/ES-AN/2008"
+			},
+			"response": []
+		},
+		{
+			"name": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/ES-AR/1542",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ee74f0ac-7655-4501-827a-68a7e5669395",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/ES-AR/1542"
+			},
+			"response": []
+		},
+		{
+			"name": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "de07ff8a-49ae-404b-b8c0-550c3693088a",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n        \"autCommunity\": \"ES-AN\",\n        \"yearFund\": \"1980\",\n        \"headquar\": \"jaen\",\n        \"type\": \"publica\",\n        \"nameUniversity\": \"universidad publica de jaen2\"\n    }"
+				},
+				"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/ES-AN/1980"
+			},
+			"response": []
+		},
+		{
+			"name": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4f41f081-3cf8-467b-916b-4c140b46ef13",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {",
+							"    pm.response.to.have.status(405);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n        \"autCommunity\": \"ES-AN\",\n        \"yearFund\": \"1980\",\n        \"headquar\": \"jaen\",\n        \"type\": \"publica\",\n        \"nameUniversity\": \"universidad publica de jaen2\"\n    }"
+				},
+				"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/ES-AN/1980"
+			},
+			"response": []
+		},
+		{
+			"name": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4f41f081-3cf8-467b-916b-4c140b46ef13",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {",
+							"    pm.response.to.have.status(405);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"autCommunity\": \"aragon\",\n        \"yearFund\": \"1542\",\n        \"headquar\": \"zaragoza2\",\n        \"type\": \"privada2\",\n        \"nameUniversity\": \"universidad de zaragoza2\"\n    }"
+				},
+				"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/"
+			},
+			"response": []
+		},
+		{
+			"name": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5f53d3e7-4f57-4276-a9fc-6fbf58301f09",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/"
+			},
+			"response": []
+		},
+		{
+			"name": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "65a0a2ea-5160-4e3f-9654-58a90df1bf3b",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/loadInitialData",
+				"description": "LoadInitialDAta"
+			},
+			"response": []
+		},
+		{
+			"name": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8e61f108-4b17-43dd-9847-b0f4268fdd65",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 409\", function () {",
+							"    pm.response.to.have.status(409);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"autCommunity\": \"ES-CT\",\n        \"yearFund\": \"2003\",\n        \"headquar\": \"barcelona\",\n        \"type\": \"privada\",\n        \"nameUniversity\": \"universidad abad oliva ceu\"\n    }"
+				},
+				"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/"
+			},
+			"response": []
+		},
+		{
+			"name": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "57b6dcaa-8ed1-4b6a-a48d-9b39c69dd5c2",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"autCommunity\": \"ES-CT\",\n        \"yearFund\": \"2003\",\n        \"headquar\": \"barcelona\",\n        \"nameUniversity\": \"universidad abad oliva ceu\"\n    }"
+				},
+				"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/"
+			},
+			"response": []
+		},
+		{
+			"name": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a59da8e4-aa6a-4e84-9526-f598e69dd45f",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"autCommunity\": \"andalucia\",\n        \"yearFund\": \"1541\",\n        \"headquar\": \"huelva\",\n        \"nameUniversity\": \"universidad de huelva\"\n    }"
+				},
+				"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/ES-CTT/1543"
+			},
+			"response": []
+		},
+		{
+			"name": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "58bece05-1d6d-476b-8ba4-3ce1187ce81d",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {",
+							"    pm.response.to.have.status(405);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"autCommunity\": \"ES-CT\",\n        \"yearFund\": \"2003\",\n        \"headquar\": \"barcelona\",\n        \"type\": \"privada\",\n        \"nameUniversity\": \"universidad abad oliva ceu\"\n    }"
+				},
+				"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/aragon/1543"
+			},
+			"response": []
+		},
+		{
+			"name": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e40259f0-7ce6-4f1c-87db-70b52a7d6474",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {",
+							"    pm.response.to.have.status(405);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"autCommunity\": \"ES-CT\",\n        \"yearFund\": \"2003\",\n        \"headquar\": \"barcelona\",\n        \"type\": \"privada\",\n        \"nameUniversity\": \"universidad abad oliva ceu\"\n    }"
+				},
+				"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "9e8fe8f1-22d4-4ac7-979b-6965d3f38458",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "f1d8fc56-2862-474a-8324-094d0ef75672",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
