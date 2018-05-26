@@ -419,13 +419,12 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "2745d4df-c17f-4061-95cc-a5a559c2feb6",
+						"id": "65a0a2ea-5160-4e3f-9654-58a90df1bf3b",
 						"type": "text/javascript",
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
-							"});",
-							""
+							"});"
 						]
 					}
 				}
