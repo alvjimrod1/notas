@@ -7,8 +7,7 @@ var path = require('path');
 
 describe('API works', function() {
     newman.run({
-        collection: require(path.join(process.cwd(), "test", "spanishUniversitiesTests",
-            "SOS1718-09-spanish-universities.postman_collection.json")),
+        collection: require(path.join(process.cwd(), "test", "spanishUniversitiesTests", "SOS1718-09-spanish-universities.postman_collection.json")),
         reporters: "cli"
 
     }, function(err) {

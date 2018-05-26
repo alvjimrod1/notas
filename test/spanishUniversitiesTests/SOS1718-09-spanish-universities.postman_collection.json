@@ -257,7 +257,7 @@
 			"description": null,
 			"item": [
 				{
-					"name": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/",
+					"name": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/ES-CT/1542",
 					"event": [
 						{
 							"listen": "test",
@@ -353,7 +353,7 @@
 					"response": []
 				},
 				{
-					"name": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/",
+					"name": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/ES-CA/1543",
 					"event": [
 						{
 							"listen": "test",
@@ -380,12 +380,12 @@
 							"mode": "raw",
 							"raw": "{\n        \"autCommunity\": \"andalucia\",\n        \"yearFund\": \"1541\",\n        \"headquar\": \"huelva\",\n        \"nameUniversity\": \"universidad de huelva\"\n    }"
 						},
-						"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/ES-CTT/1543"
+						"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/ES-CA/1543"
 					},
 					"response": []
 				},
 				{
-					"name": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/",
+					"name": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/ES-CT/2003",
 					"event": [
 						{
 							"listen": "test",
