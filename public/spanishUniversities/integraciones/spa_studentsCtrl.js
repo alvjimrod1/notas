@@ -60,7 +60,7 @@ angular.module("AppManager").controller("spa_studentsCtrl", ["$scope", "$http", 
                     res.push([i['province'], i['popilliterate'], i['pophigheducation'], i['popinuniversity']]);
             });
 
-            ///HIGHCHARTS 2///
+            ///Google Bubble///
 
             google.charts.load('current', { 'packages': ['corechart'] });
             google.charts.setOnLoadCallback(drawSeriesChart);

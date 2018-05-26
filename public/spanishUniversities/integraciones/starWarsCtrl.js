@@ -29,7 +29,7 @@ angular.module("AppManager").controller("starWarsCtrl", ["$scope", "$http", "$lo
         console.log("Aqui el starData");
         console.log(starWarsData);
 
-
+/*C3 charts */
         var chart = c3.generate({
             data: {
                 columns: starWarsData.sort(function(a, b) {

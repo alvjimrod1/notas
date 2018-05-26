@@ -88,7 +88,7 @@ angular.module("AppManager").controller("spa_crimeCtrl", ["$scope", "$http", "$l
             }
 
 
-            ///HIGHCHARTS 2///
+            ///C3 charts///
 
             var chart = c3.generate({
 
