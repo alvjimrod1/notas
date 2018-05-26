@@ -1,0 +1,229 @@
+{
+	"info": {
+		"_postman_id": "15cc4f8f-d116-4a8d-9aa2-3eb56d3136bb",
+		"name": "errores",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "02-basics_errors",
+			"description": null,
+			"item": [
+				{
+					"name": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4889178f-6472-4c15-b3d2-44a2c9e845e9",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"autCommunity\": \"ES-CT\",\n        \"yearFund\": \"2003\",\n        \"headquar\": \"barcelona\",\n        \"type\": \"privada\",\n        \"nameUniversity\": \"universidad abad oliva ceu\"\n    }"
+						},
+						"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/ES-CT/1542"
+					},
+					"response": []
+				},
+				{
+					"name": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8e61f108-4b17-43dd-9847-b0f4268fdd65",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 409\", function () {",
+									"    pm.response.to.have.status(409);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"autCommunity\": \"ES-CT\",\n        \"yearFund\": \"2003\",\n        \"headquar\": \"barcelona\",\n        \"type\": \"privada\",\n        \"nameUniversity\": \"universidad abad oliva ceu\"\n    }"
+						},
+						"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/"
+					},
+					"response": []
+				},
+				{
+					"name": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "57b6dcaa-8ed1-4b6a-a48d-9b39c69dd5c2",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"autCommunity\": \"ES-CT\",\n        \"yearFund\": \"2003\",\n        \"headquar\": \"barcelona\",\n        \"nameUniversity\": \"universidad abad oliva ceu\"\n    }"
+						},
+						"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/"
+					},
+					"response": []
+				},
+				{
+					"name": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a59da8e4-aa6a-4e84-9526-f598e69dd45f",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"autCommunity\": \"andalucia\",\n        \"yearFund\": \"1541\",\n        \"headquar\": \"huelva\",\n        \"nameUniversity\": \"universidad de huelva\"\n    }"
+						},
+						"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/ES-CTT/1543"
+					},
+					"response": []
+				},
+				{
+					"name": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "58bece05-1d6d-476b-8ba4-3ce1187ce81d",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 405\", function () {",
+									"    pm.response.to.have.status(405);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"autCommunity\": \"ES-CT\",\n        \"yearFund\": \"2003\",\n        \"headquar\": \"barcelona\",\n        \"type\": \"privada\",\n        \"nameUniversity\": \"universidad abad oliva ceu\"\n    }"
+						},
+						"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/ES-CT/2003"
+					},
+					"response": []
+				},
+				{
+					"name": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e40259f0-7ce6-4f1c-87db-70b52a7d6474",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 405\", function () {",
+									"    pm.response.to.have.status(405);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"autCommunity\": \"ES-CT\",\n        \"yearFund\": \"2004\",\n        \"headquar\": \"barcelona\",\n        \"type\": \"privada\",\n        \"nameUniversity\": \"universidad abad oliva ceu\"\n    }"
+						},
+						"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "9e8fe8f1-22d4-4ac7-979b-6965d3f38458",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "f1d8fc56-2862-474a-8324-094d0ef75672",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
