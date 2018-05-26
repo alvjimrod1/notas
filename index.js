@@ -87,7 +87,7 @@ var initialUniversities = [
     },
     {
         autCommunity: "ES-AN",
-        yearFund: "1505",
+        yearFund: "1905",
         headquar: "sevilla",
         type: "publica",
         nameUniversity: "universidad de sevilla"
@@ -98,13 +98,6 @@ var initialUniversities = [
         headquar: "sevilla",
         type: "privada",
         nameUniversity: "universidad loyola andalucia"
-    },
-    {
-        autCommunity: "ES-AN",
-        yearFund: "2012",
-        headquar: "sevilla",
-        type: "privada",
-        nameUniversity: "universidad Loyola"
     },
     {
         autCommunity: "ES-AN",
@@ -125,14 +118,14 @@ var initialUniversities = [
         yearFund: "2013",
         headquar: "cadiz",
         type: "publica",
-        nameUniversity: "universidad publica de prueba"
+        nameUniversity: "universidad publica de cadiz"
     },
     {
         autCommunity: "ES-AN",
         yearFund: "1999",
         headquar: "cordoba",
         type: "publica",
-        nameUniversity: "prueba 1"
+        nameUniversity: "universidad publica de cordoba"
     },
     {
         autCommunity: "ES-PV",
@@ -146,17 +139,33 @@ var initialUniversities = [
         yearFund: "2008",
         headquar: "sevilla",
         type: "publica",
-        nameUniversity: "etsii"
+        nameUniversity: "escuela técnica superior ing informatica"
     },
 
     {
         autCommunity: "ES-AN",
         yearFund: "1995",
         headquar: "cadiz",
-        type: "publica",
-        nameUniversity: "universidad publica de cadiz"
-    }
+        type: "privada",
+        nameUniversity: "universidad privada de cadiz"
+    },
 
+    {
+        autCommunity: "ES-AN",
+        yearFund: "1980",
+        headquar: "jaen",
+        type: "publica",
+        nameUniversity: "universidad publica de jaen"
+    }
+,
+
+    {
+        autCommunity: "ES-AN",
+        yearFund: "1972",
+        headquar: "granada",
+        type: "publica",
+        nameUniversity: "universidad publica de granada"
+    }
 ];
 
 
