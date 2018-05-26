@@ -439,6 +439,30 @@
 				"url": "http://sos1718-09.herokuapp.com/api/v1/span-univ-stats"
 			},
 			"response": []
+		},
+		{
+			"name": "http://sos1718-09.herokuapp.com/api/v1/span-univ-stats/loadInitialData",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "607e97b3-88bb-4a55-accc-57c159eaabe8",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "http://sos1718-09.herokuapp.com/api/v1/span-univ-stats/loadInitialData"
+			},
+			"response": []
 		}
 	]
 }
