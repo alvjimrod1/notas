@@ -14,7 +14,6 @@ describe('Data is loaded', function() {
          .then(function() {
             element.all(by.repeater('stat in stats'))
                .then(function(stats) {
-                  console.log("LENG BALTA"+stats.length)
                   expect(stats.length).toBeGreaterThan(0);
                });
 
@@ -22,4 +21,3 @@ describe('Data is loaded', function() {
 
    });
 });
-
