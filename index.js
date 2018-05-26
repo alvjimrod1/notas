@@ -100,12 +100,6 @@ var initialUniversities = [{
         "type": "privada",
         "nameUniversity": "universidad privada de cordoba"
     }, {
-        "autCommunity": "ES-AR",
-        "yearFund": "2028",
-        "headquar": "huelva",
-        "type": "publica",
-        "nameUniversity": "universidad publica de huelva"
-    }, {
         "autCommunity": "ES-AN",
         "yearFund": "2013",
         "headquar": "cadiz",

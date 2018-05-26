@@ -1,13 +1,13 @@
 {
 	"info": {
-		"_postman_id": "091b173e-fa70-4a07-9b0a-7044781e9282",
+		"_postman_id": "e772fe4b-0e48-4d0d-8693-fc59befeeb24",
 		"name": "SOS1718-09-spanish-universities",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "basics_errors",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/",
@@ -223,13 +223,16 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {},
-				"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/"
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities"
 			},
 			"response": []
 		},
 		{
-			"name": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/",
+			"name": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/ES-AN/2008",
 			"event": [
 				{
 					"listen": "test",
@@ -261,17 +264,14 @@
 			"response": []
 		},
 		{
-			"name": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/andalucia/1979",
+			"name": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/ES-AR/1542",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "14da27d5-1e5f-4a34-bc7a-1aeed4849918",
+						"id": "ee74f0ac-7655-4501-827a-68a7e5669395",
 						"type": "text/javascript",
 						"exec": [
-							"var jsonData = JSON.parse(responseBody);",
-							"tests[\"Array should be 12\"] = (jsonData.length >= 12);",
-							"",
 							""
 						]
 					}
@@ -280,8 +280,11 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {},
-				"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/"
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/ES-AR/1542"
 			},
 			"response": []
 		},
@@ -432,7 +435,10 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": "https://sos1718-09.herokuapp.com/api/v1/spanish-universities/loadInitialData",
 				"description": "LoadInitialDAta"
 			},
