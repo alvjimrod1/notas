@@ -14,11 +14,11 @@ describe('Add an univ', function() {
                     .then(function(initialUnivs) {
                         //           browser.driver.sleep(2000);
 
-                        element(by.model('newUniv.autCommunity')).sendKeys("Andalucia");
-                        element(by.model('newUniv.yearFund')).sendKeys("1900");
-                        element(by.model('newUniv.headquar')).sendKeys("Sevilla");
+                        element(by.model('newUniv.autCommunity')).sendKeys("ES-MA");
+                        element(by.model('newUniv.yearFund')).sendKeys("1996");
+                        element(by.model('newUniv.headquar')).sendKeys("Madrid");
                         element(by.model('newUniv.type')).sendKeys("publica");
-                        element(by.model('newUniv.nameUniversity')).sendKeys("Universidad de prueba");
+                        element(by.model('newUniv.nameUniversity')).sendKeys("Universidad Rey Juan Carlos");
 
 
 

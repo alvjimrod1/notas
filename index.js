@@ -67,66 +67,94 @@ app.use("/proxyRAR/", function(req, res) {
     req.pipe(request(url)).pipe(res);
 });
 /*----------*/
-
-
 /* API SPANISH UNIVERSITIES */
 
 var initialUniversities = [
 
     {
-
-        "autCommunity": "ES-AR",
-        "yearFund": "1542",
-        "headquar": "zaragoza",
-        "type": "publica",
-        "nameUniversity": "universidad de zaragoza"
-
-
-
+        autCommunity: "ES-AR",
+        yearFund: "1542",
+        headquar: "zaragoza",
+        type: "publica",
+        nameUniversity: "universidad de zaragoza"
+    },
+    {
+        autCommunity: "ES-CT",
+        yearFund: "2003",
+        headquar: "barcelona",
+        type: "privada",
+        nameUniversity: "universidad abad oliva ceu"
+    },
+    {
+        autCommunity: "ES-AN",
+        yearFund: "1505",
+        headquar: "sevilla",
+        type: "publica",
+        nameUniversity: "universidad de sevilla"
+    },
+    {
+        autCommunity: "ES-AN",
+        yearFund: "2011",
+        headquar: "sevilla",
+        type: "privada",
+        nameUniversity: "universidad loyola andalucia"
+    },
+    {
+        autCommunity: "ES-AN",
+        yearFund: "2012",
+        headquar: "sevilla",
+        type: "privada",
+        nameUniversity: "universidad Loyola"
+    },
+    {
+        autCommunity: "ES-AN",
+        yearFund: "1998",
+        headquar: "cordoba",
+        type: "privada",
+        nameUniversity: "universidad privada de cordoba"
+    },
+    {
+        autCommunity: "ES-AR",
+        yearFund: "2028",
+        headquar: "huelva",
+        type: "publica",
+        nameUniversity: "universidad publica de huelva"
+    },
+    {
+        autCommunity: "ES-AN",
+        yearFund: "2013",
+        headquar: "cadiz",
+        type: "publica",
+        nameUniversity: "universidad publica de prueba"
+    },
+    {
+        autCommunity: "ES-AN",
+        yearFund: "1999",
+        headquar: "cordoba",
+        type: "publica",
+        nameUniversity: "prueba 1"
+    },
+    {
+        autCommunity: "ES-PV",
+        yearFund: "1923",
+        headquar: "bilbao",
+        type: "publica",
+        nameUniversity: "universidad publica de bilbao"
+    },
+    {
+        autCommunity: "ES-AN",
+        yearFund: "2008",
+        headquar: "sevilla",
+        type: "publica",
+        nameUniversity: "etsii"
     },
 
     {
-
-        "autCommunity": "ES-CT",
-        "yearFund": "2003",
-        "headquar": "barcelona",
-        "type": "privada",
-        "nameUniversity": "universidad abad oliva ceu"
-
-
-    },
-
-    {
-
-        "autCommunity": "ES-AN",
-        "yearFund": "1505",
-        "headquar": "sevilla",
-        "type": "publica",
-        "nameUniversity": "universidad de sevilla"
-
-
-    },
-
-    {
-
-        "autCommunity": "ES-AN",
-        "yearFund": "2011",
-        "headquar": "sevilla",
-        "type": "privada",
-        "nameUniversity": "universidad loyola andalucia"
-
-
-    },
-
-    {
-
-        "autCommunity": "ES-GA",
-        "yearFund": "1990",
-        "headquar": "vigo",
-        "type": "publica",
-        "nameUniversity": "universidad de vigo"
-
-
+        autCommunity: "ES-AN",
+        yearFund: "1995",
+        headquar: "cadiz",
+        type: "publica",
+        nameUniversity: "universidad publica de cadiz"
     }
 
 ];
