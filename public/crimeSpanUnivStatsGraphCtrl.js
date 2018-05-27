@@ -8,6 +8,7 @@ angular.module("AppManager").controller("crimeSpanUnivStatsGraphCtrl", ["$scope"
     console.log("Graph Controller Initialized!");
     var apiSpanUnivStats = "/api/v2/span-univ-stats";
     var apiCrime = "https://sos1718-07.herokuapp.com/api/v1/global-terrorism-data";
+    var apiLibraries = "https://libraries.io/api/platforms"
 
 
     $scope.return = function() {
@@ -49,10 +50,6 @@ angular.module("AppManager").controller("crimeSpanUnivStatsGraphCtrl", ["$scope"
         }
 
 
-
-
-
-
         /* CRIME STATS*/
         $http.get(apiCrime).then(function(responseCrime) {
             console.log(responseCrime.data);
@@ -62,12 +59,12 @@ angular.module("AppManager").controller("crimeSpanUnivStatsGraphCtrl", ["$scope"
 
             for (var i = 0; i < responseCrime.data.length; i++) {
                 years.push(responseCrime.data[i].iyear);
-                
+
             }
-            
+
             for (var i = 0; i < years.sortNumbers().unique().length; i++) {
                 var yearEnrolledNumber = 0;
-                var yearKillsNumber=0;
+                var yearKillsNumber = 0;
                 for (var j = 0; j < responseSpanUnivStats.data.length; j++) {
                     if (responseSpanUnivStats.data[j].year == years.sortNumbers().unique()[i]) {
                         yearEnrolledNumber += responseSpanUnivStats.data[j].enrolledNumber;
@@ -138,8 +135,58 @@ angular.module("AppManager").controller("crimeSpanUnivStatsGraphCtrl", ["$scope"
                     data: totalKills
                 }]
             });
-
         });
+        
+        
 
+
+        /* LIBRARIES CHART */
+        
+        $http.get(apiLibraries).then(function(responseLibraries) {
+            console.log(responseLibraries.data);
+            var degreeNumber=[];
+            var projectCount=[];
+            var dataSeries = [];
+            
+            for(var i = 0 ; i < responseSpanUnivStats.data.length ; i++){
+                degreeNumber.push(responseSpanUnivStats.data[i].degree);
+            }
+            for(var j = 0 ; j < responseLibraries.data.length ; j++){
+                projectCount.push(responseLibraries.data[j].project_count);
+            }
+            console.log(projectCount);
+            console.log(degreeNumber);
+            dataSeries.push(projectCount);
+            dataSeries.push(degreeNumber);
+
+            var data = {
+                series: dataSeries
+            };
+
+            var options = {
+                seriesBarDistance: 15
+            };
+
+            var responsiveOptions = [
+                ['screen and (min-width: 641px) and (max-width: 1024px)', {
+                    seriesBarDistance: 10,
+                    axisX: {
+                        labelInterpolationFnc: function(value) {
+                            return value;
+                        }
+                    }
+                }],
+                ['screen and (max-width: 640px)', {
+                    seriesBarDistance: 5,
+                    axisX: {
+                        labelInterpolationFnc: function(value) {
+                            return value[0];
+                        }
+                    }
+                }]
+            ];
+
+            new Chartist.Bar('.ct-chart', data, options, responsiveOptions);
+        });
     });
 }]);
