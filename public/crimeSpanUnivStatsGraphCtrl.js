@@ -9,6 +9,7 @@ angular.module("AppManager").controller("crimeSpanUnivStatsGraphCtrl", ["$scope"
     var apiSpanUnivStats = "/api/v2/span-univ-stats";
     var apiCrime = "https://sos1718-07.herokuapp.com/api/v1/global-terrorism-data";
     var apiLibraries = "https://libraries.io/api/platforms"
+    var apiMarvel = "http://gateway.marvel.com/v1/public/comics?ts=1&apikey=75b5994400a36403395f755582313fbb&hash=1951d4a03480afc3b7c19e1f6e5b89e4";
 
 
     $scope.return = function() {
@@ -50,9 +51,12 @@ angular.module("AppManager").controller("crimeSpanUnivStatsGraphCtrl", ["$scope"
         }
 
 
-        /* CRIME STATS*/
+
+
+        /*  1) CRIME STATS */
+
         $http.get(apiCrime).then(function(responseCrime) {
-            console.log(responseCrime.data);
+            console.log("Crime data : ", responseCrime.data);
 
             var totalKills = [];
             var totalEnrolledNumber = [];
@@ -136,28 +140,35 @@ angular.module("AppManager").controller("crimeSpanUnivStatsGraphCtrl", ["$scope"
                 }]
             });
         });
-        
-        
 
 
-        /* LIBRARIES CHART */
-        
+
+
+
+
+
+
+        /* 2) LIBRARIES CHART */
+
         $http.get(apiLibraries).then(function(responseLibraries) {
-            console.log(responseLibraries.data);
-            var degreeNumber=[];
-            var projectCount=[];
+            console.log("Libraries data : ", responseLibraries.data);
+            var degreeNumber = [];
+            var projectCount = [];
             var dataSeries = [];
-            
-            for(var i = 0 ; i < responseSpanUnivStats.data.length ; i++){
+
+            for (var i = 0; i < responseSpanUnivStats.data.length; i++) {
                 degreeNumber.push(responseSpanUnivStats.data[i].degree);
             }
-            for(var j = 0 ; j < responseLibraries.data.length ; j++){
+            for (var j = 0; j < responseLibraries.data.length; j++) {
                 projectCount.push(responseLibraries.data[j].project_count);
             }
             console.log(projectCount);
             console.log(degreeNumber);
             dataSeries.push(projectCount);
             dataSeries.push(degreeNumber);
+
+
+            /* CHARTIST*/
 
             var data = {
                 series: dataSeries
@@ -188,5 +199,96 @@ angular.module("AppManager").controller("crimeSpanUnivStatsGraphCtrl", ["$scope"
 
             new Chartist.Bar('.ct-chart', data, options, responsiveOptions);
         });
+
+
+
+
+
+
+
+
+
+        /* MARVEL API */
+
+
+        $http.get(apiMarvel).then(function(responseMarvel) {
+            console.log("Results Marvel´s comics:", responseMarvel.data.data.results);
+            var firstSecondCycleNumber=0;
+            var issueNumbers = 0;
+            var masterNumber = 0;
+            var seriesData=[];
+            
+            for(var i = 0 ; i < responseMarvel.data.data.results.length ; i++){
+                issueNumbers += responseMarvel.data.data.results[i].issueNumber;
+            }
+            for( var j = 0 ; j < responseSpanUnivStats.data.length ; j++){
+                firstSecondCycleNumber += responseSpanUnivStats.data[j].firstSecondCycle;
+                masterNumber += responseSpanUnivStats.data[j].master;
+            }
+            
+            seriesData.push(issueNumbers+100000);
+            seriesData.push(firstSecondCycleNumber);
+            seriesData.push(masterNumber);
+            
+            
+            /*CHARTIST*/
+
+            var marvelChart = new Chartist.Pie('.ct-chart1', {
+                series: seriesData,
+                labels: ["MarvelApi","MyApi-FSCycle", "MyApi-Master"]
+            }, {
+                donut: true,
+                showLabel: true
+            });
+
+            marvelChart.on('draw', function(data) {
+                if (data.type === 'slice') {
+                    // Get the total path length in order to use for dash array animation
+                    var pathLength = data.element._node.getTotalLength();
+
+                    // Set a dasharray that matches the path length as prerequisite to animate dashoffset
+                    data.element.attr({
+                        'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
+                    });
+
+                    // Create animation definition while also assigning an ID to the animation for later sync usage
+                    var animationDefinition = {
+                        'stroke-dashoffset': {
+                            id: 'anim' + data.index,
+                            dur: 1000,
+                            from: -pathLength + 'px',
+                            to: '0px',
+                            easing: Chartist.Svg.Easing.easeOutQuint,
+                            // We need to use `fill: 'freeze'` otherwise our animation will fall back to initial (not visible)
+                            fill: 'freeze'
+                        }
+                    };
+
+                    // If this was not the first slice, we need to time the animation so that it uses the end sync event of the previous animation
+                    if (data.index !== 0) {
+                        animationDefinition['stroke-dashoffset'].begin = 'anim' + (data.index - 1) + '.end';
+                    }
+
+                    // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
+                    data.element.attr({
+                        'stroke-dashoffset': -pathLength + 'px'
+                    });
+
+                    // We can't use guided mode as the animations need to rely on setting begin manually
+                    // See http://gionkunz.github.io/chartist-js/api-documentation.html#chartistsvg-function-animate
+                    data.element.animate(animationDefinition, false);
+                }
+            });
+
+            // For the sake of the example we update the chart every time it's created with a delay of 8 seconds
+            marvelChart.on('created', function() {
+                if (window.__anim21278907124) {
+                    clearTimeout(window.__anim21278907124);
+                    window.__anim21278907124 = null;
+                }
+                window.__anim21278907124 = setTimeout(marvelChart.update.bind(marvelChart), 10000);
+            });
+        });
+
     });
 }]);
