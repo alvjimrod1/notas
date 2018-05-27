@@ -45,9 +45,9 @@ app.use("/proxyAJR/", function(req, res) {
     req.pipe(request(url)).pipe(res);
 });
 
-var apiServerHost2 = "http://www.etnassoft.com";
+var apiServerHost2 = "https://api.worldbank.org";
 
-app.use("/proxyAJR1/", function(req, res) {
+app.use("/proxyAJR2/", function(req, res) {
 
     var url = apiServerHost2 + req.url;
 

@@ -83,6 +83,10 @@ angular
                 templateUrl: "../spanishUniversities/integraciones/bicis.html",
                 controller: "bicisCtrl"
             })
+            .when("/spanishUniversitiesInt8", {
+                templateUrl: "../spanishUniversities/integraciones/worldBank.html",
+                controller: "worldBankCtrl"
+            })
 
             /*RAFA*/
             .when("/openSourceContests", {
