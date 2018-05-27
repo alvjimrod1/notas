@@ -6,9 +6,84 @@ angular.module("AppManager").controller("tiempoCtrl", ["$scope", "$http", "$loca
     console.log("Graph CORS Controller Initialized!");
     //var api = "https://simple-weather.p.mashape.com/weatherdata?lat=" + 37.3890924 + "&lng=" + -5.984458899999936;
 
-    $scope.lat = 37.3890924;
-    $scope.long = -5.984458899999936;
+    var chart = AmCharts.makeChart("chartdiv", {
+        "theme": "light",
+        "type": "serial",
+
+        "valueAxes": [{
+            "stackType": "3d",
+            "unit": "ºC",
+            "position": "left",
+            "title": "Temperatures",
+        }],
+        "startDuration": 1,
+        "graphs": [{
+            "balloonText": "Min temperature on [[category]]:  <b>[[value]]</b>",
+            "fillAlphas": 0.9,
+            "lineAlpha": 0.2,
+            "title": "Min",
+            "type": "column",
+            "valueField": "min"
+        }, {
+            "balloonText": "Max temperature on [[category]]:  <b>[[value]]</b>",
+            "fillAlphas": 0.9,
+            "lineAlpha": 0.2,
+            "title": "Max",
+            "type": "column",
+            "valueField": "max"
+        }],
+        "plotAreaFillAlphas": 0.1,
+        "depth3D": 60,
+        "angle": 30,
+        "categoryField": "date",
+        "categoryAxis": {
+            "gridPosition": "start"
+        },
+        "export": {
+            "enabled": true
+        }
+    });
+    jQuery('.chart-input').off().on('input change', function() {
+        var property = jQuery(this).data('property');
+        var target = chart;
+        chart.startDuration = 0;
+
+        if (property == 'topRadius') {
+            target = chart.graphs[0];
+            if (this.value == 0) {
+                this.value = undefined;
+            }
+        }
+
+        target[property] = this.value;
+        chart.validateNow();
+    });
+
     $scope.getWeather = function() {
+
+        switch ($scope.ciudad) {
+            case 'Sevilla':
+                $scope.lat = 37.3890924;
+                $scope.long = -5.984458899999936;
+                break;
+            case 'Madrid':
+                $scope.lat = 40.4167754;
+                $scope.long = -3.7037901999999576;
+                break;
+            case 'Barcelona':
+                $scope.lat = 41.3850639;
+                $scope.long = 2.1734034999999494;
+                break;
+            case 'Chipiona':
+                $scope.lat = 36.7348614;
+                $scope.long = -6.4316989999999805;
+                break;
+            default:
+                console.log("Hay un fallo con las coordenadas");
+
+        }
+        console.log("Latitud : " + $scope.lat);
+        console.log("Longitud" + $scope.long);
 
         var api = "https://simple-weather.p.mashape.com/weatherdata?lat=" + $scope.lat + "&lng=" + $scope.long;
         $http.get(api, {
@@ -26,59 +101,18 @@ angular.module("AppManager").controller("tiempoCtrl", ["$scope", "$http", "$loca
             responseData.map(function(i) {
                 res.push([i['date'], i['high'], i['low']]);
             });
-            /*
-            console.log("RES");
-            console.log(res);
-            console.log("FECHA")
-            console.log(res[0][0])
-            */
-            //   var fechas = ["date" +:+res[0][0]];
+            var a = [];
+            for (var i = 0; i < res.length; i++) {
+                // if (res[i][0] == "Onroll")
+                a.push({ "date": res[i][0], "min": res[i][2], "max": res[i][1] });
+            }
+
 
             /* ESPACIO PARA IMPLEMENTAR LA CHART*/
             var chart = AmCharts.makeChart("chartdiv", {
                 "theme": "light",
                 "type": "serial",
-                "dataProvider": [{
-                    "date": res[0][0],
-                    "min": res[0][2],
-                    "max": res[0][1]
-                }, {
-                    "date": res[1][0],
-                    "min": res[1][2],
-                    "max": res[1][1]
-                }, {
-                    "date": res[2][0],
-                    "min": res[2][2],
-                    "max": res[2][1]
-                }, {
-                    "date": res[3][0],
-                    "min": res[3][2],
-                    "max": res[3][1]
-                }, {
-                    "date": res[4][0],
-                    "min": res[4][2],
-                    "max": res[4][1]
-                }, {
-                    "date": res[5][0],
-                    "min": res[5][2],
-                    "max": res[5][1]
-                }, {
-                    "date": res[6][0],
-                    "min": res[6][2],
-                    "max": res[6][1]
-                }, {
-                    "date": res[7][0],
-                    "min": res[7][2],
-                    "max": res[7][1]
-                }, {
-                    "date": res[8][0],
-                    "min": res[8][2],
-                    "max": res[8][1]
-                }, {
-                    "date": res[9][0],
-                    "min": res[9][2],
-                    "max": res[9][1]
-                }],
+                "dataProvider": a,
                 "valueAxes": [{
                     "stackType": "3d",
                     "unit": "ºC",
@@ -128,11 +162,8 @@ angular.module("AppManager").controller("tiempoCtrl", ["$scope", "$http", "$loca
                 chart.validateNow();
             });
 
-            /*---------------------*/
+
         });
-
-
-        // getSpanishUniversities();
 
     };
 }]);

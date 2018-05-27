@@ -26,16 +26,17 @@
     <h1><strong>Highcharts Integracion API Tiempo por coordenadas</strong></h1>
 </center>
 <!--  CHARTS  -->
-<div class="row">
-    <div class="col">
-        Por defecto, Sevilla.
-        <td> <input class="form-control" style="text-align:center" ng-model="lat" value="Latitud" /></td>
-        <td> <input class="form-control" style="text-align:center" ng-model="long" placeholder="Longitud" /></td>
-
+<div class="section">
+    <div>
+        <h5>Selecciona una ciudad</h5>
     </div>
+    <select class="browser" ng-model="ciudad">
+        <option value="Sevilla">Sevilla</option>
+        <option value="Madrid"> Madrid</option>
+        <option value="Barcelona"> Barcelona</option>
+        <option value="Chipiona"> Chipiona</option>
+    </select> <button class="button btn-sm btn-primary" ng-click="getWeather()">Consultar</button>
 </div>
 </div>
-<div>
-    <button class="button btn-sm btn-primary" ng-click="getWeather()">Consultar</button>
-</div>
+
 <div id="chartdiv" style="margin: 0 auto; width: 1000px; height: 500px;"></div>
