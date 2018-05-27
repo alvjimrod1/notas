@@ -45,7 +45,7 @@ app.use("/proxyAJR/", function(req, res) {
     req.pipe(request(url)).pipe(res);
 });
 
-var apiServerHost2 = "https://api.worldbank.org";
+var apiServerHost2 = "http://mars.jpl.nasa.gov";
 
 app.use("/proxyAJR2/", function(req, res) {
 
