@@ -2,7 +2,7 @@
 /* global AmCharts */
 
 
-angular.module("AppManager").controller("worldBankCtrl", ["$scope", "$http", "$location", function($scope, $http, $location) {
+angular.module("AppManager").controller("nasaCtrl", ["$scope", "$http", "$location", function($scope, $http, $location) {
     console.log("Graph CORS Controller Initialized!");
     //  var api = "http://api.worldbank.org/v2/datacatalog?format=json";
 
@@ -10,7 +10,8 @@ angular.module("AppManager").controller("worldBankCtrl", ["$scope", "$http", "$l
     $scope.getFecha = function() {
         var fecha = $scope.fecha;
         //2014-5-9
-        console.log(fecha)
+
+        console.log(fecha);
         var api = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=" + fecha + "&api_key=zsS2DYYqAlbRGl0Z95uk3YNgj1r8KyfFLNkGD8iS";
         var urls = [];
         $http.get(api).then(function(response) {
@@ -20,8 +21,10 @@ angular.module("AppManager").controller("worldBankCtrl", ["$scope", "$http", "$l
             console.log(responseData);
             console.log("HOLA");
 
+
             responseData.map(function(i) {
                 urls.push([i['img_src'], i['camera']['name']]);
+
             });
             var FHAZ = [];
             var RHAZ = [];
@@ -44,6 +47,7 @@ angular.module("AppManager").controller("worldBankCtrl", ["$scope", "$http", "$l
 
             }
 
+
             console.log(urls);
             console.log("FHAZ");
             console.log(FHAZ);
@@ -57,11 +61,13 @@ angular.module("AppManager").controller("worldBankCtrl", ["$scope", "$http", "$l
             console.log(FHAZ[0][0])
             console.log(FHAZ[0][0].substring(25, 200));
 
+
             /*CHARTS*/
             var myConfig = {
+
                 "backgroundImage": "/proxyAJR2/" + FHAZ[0][0].substring(25, 200),
                 "title": {
-                    "text": "Heat Map",
+                    "text": "FHAZ",
                     "font-color": "#FFF"
                 },
 
@@ -73,7 +79,8 @@ angular.module("AppManager").controller("worldBankCtrl", ["$scope", "$http", "$l
                 height: 300,
                 width: 525
             });
-            var myConfig = {
+            /*
+            var myConfig2 = {
                 "backgroundImage": "/proxyAJR2/msl-raw-images/proj/msl/redops/ods/surface/sol/01000/opgs/edr/fcam/FRB_486265257EDR_F0481570FHAZ00323M_.JPG",
                 "title": {
                     "text": "Heat Map",
@@ -83,13 +90,13 @@ angular.module("AppManager").controller("worldBankCtrl", ["$scope", "$http", "$l
             };
 
             zingchart.render({
-                id: 'myChart',
-                data: myConfig,
+                id: 'myChart2',
+                data: myConfig2,
                 height: 300,
                 width: 525
             });
 
-
+*/
 
             /*FINAL CHATS */
         });
