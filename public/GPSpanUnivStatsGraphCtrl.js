@@ -73,7 +73,7 @@ angular.module("AppManager").controller("GPSpanUnivStatsGraphCtrl", ["$scope", "
                 var newDataMotoGp=[];
                 
                 for (var j = 0; j < responseSpanUnivStats.data.length; j++) {
-                    if (responseSpanUnivStats.data[j].year == years.sortNumbers().unique()[i]) {
+                    if (responseSpanUnivStats.data[j].year == actualYear) {
                         yearEnrolledNumber += responseSpanUnivStats.data[j].enrolledNumber;
 
                     }
@@ -82,7 +82,7 @@ angular.module("AppManager").controller("GPSpanUnivStatsGraphCtrl", ["$scope", "
                 dataSpanUniv.push(newDataSpanUniv);
                 
                 for (var j = 0; j < responseGP.data.length; j++) {
-                    if (responseGP.data[j].year == years.sortNumbers().unique()[i]) {
+                    if (responseGP.data[j].year == actualYear) {
                         yearScore += responseGP.data[j].score;
                     }
                 }
