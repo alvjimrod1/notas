@@ -8,7 +8,7 @@ spanUnivStatsApi.register = function(app, SpanUNivStatsdb, initialStats) {
 
     console.log("Registering routes for span-univ-stats API...");
     
-    /*PROXY*/
+    /*PROXY MOTOGP*/
     var request = require("request");
     var apiServerHost="https://sos1718-10.herokuapp.com";
     ///api/v1/motogp-stats
@@ -17,6 +17,14 @@ spanUnivStatsApi.register = function(app, SpanUNivStatsdb, initialStats) {
         
         var url = apiServerHost + req.url;
         req.pipe(request(url)).pipe(res);
+    });
+    
+    /*PROXY DAYNAMES*/
+    var apiServerDayNames="https://api.abalin.net";
+    
+    app.use("/proxyDayNames",function(req,res){
+       var url = apiServerDayNames + req.url;
+       req.pipe(request(url)).pipe(res);
     });
 
 

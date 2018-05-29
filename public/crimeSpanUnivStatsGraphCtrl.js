@@ -10,7 +10,7 @@ angular.module("AppManager").controller("crimeSpanUnivStatsGraphCtrl", ["$scope"
     var apiCrime = "https://sos1718-07.herokuapp.com/api/v1/global-terrorism-data";
     var apiLibraries = "https://libraries.io/api/platforms"
     var apiMarvel = "http://gateway.marvel.com/v1/public/comics?ts=1&apikey=75b5994400a36403395f755582313fbb&hash=1951d4a03480afc3b7c19e1f6e5b89e4";
-
+    var apiDayNames = "https://api.abalin.net/get/namedays?day=30&month=5&country=es";
 
     $scope.return = function() {
         $location.path("/spanUnivStats");
@@ -49,6 +49,11 @@ angular.module("AppManager").controller("crimeSpanUnivStatsGraphCtrl", ["$scope"
             years.push(responseSpanUnivStats.data[i].year);
 
         }
+        
+
+
+
+
 
 
 
@@ -140,6 +145,7 @@ angular.module("AppManager").controller("crimeSpanUnivStatsGraphCtrl", ["$scope"
                 }]
             });
         });
+        
 
 
 
@@ -199,6 +205,7 @@ angular.module("AppManager").controller("crimeSpanUnivStatsGraphCtrl", ["$scope"
 
             new Chartist.Bar('.ct-chart', data, options, responsiveOptions);
         });
+        
 
 
 
@@ -207,8 +214,7 @@ angular.module("AppManager").controller("crimeSpanUnivStatsGraphCtrl", ["$scope"
 
 
 
-
-        /* MARVEL API */
+        /* 3) MARVEL API */
 
 
         $http.get(apiMarvel).then(function(responseMarvel) {
@@ -243,15 +249,12 @@ angular.module("AppManager").controller("crimeSpanUnivStatsGraphCtrl", ["$scope"
 
             marvelChart.on('draw', function(data) {
                 if (data.type === 'slice') {
-                    // Get the total path length in order to use for dash array animation
                     var pathLength = data.element._node.getTotalLength();
 
-                    // Set a dasharray that matches the path length as prerequisite to animate dashoffset
                     data.element.attr({
                         'stroke-dasharray': pathLength + 'px ' + pathLength + 'px'
                     });
 
-                    // Create animation definition while also assigning an ID to the animation for later sync usage
                     var animationDefinition = {
                         'stroke-dashoffset': {
                             id: 'anim' + data.index,
@@ -259,28 +262,22 @@ angular.module("AppManager").controller("crimeSpanUnivStatsGraphCtrl", ["$scope"
                             from: -pathLength + 'px',
                             to: '0px',
                             easing: Chartist.Svg.Easing.easeOutQuint,
-                            // We need to use `fill: 'freeze'` otherwise our animation will fall back to initial (not visible)
                             fill: 'freeze'
                         }
                     };
 
-                    // If this was not the first slice, we need to time the animation so that it uses the end sync event of the previous animation
                     if (data.index !== 0) {
                         animationDefinition['stroke-dashoffset'].begin = 'anim' + (data.index - 1) + '.end';
                     }
 
-                    // We need to set an initial value before the animation starts as we are not in guided mode which would do that for us
                     data.element.attr({
                         'stroke-dashoffset': -pathLength + 'px'
                     });
 
-                    // We can't use guided mode as the animations need to rely on setting begin manually
-                    // See http://gionkunz.github.io/chartist-js/api-documentation.html#chartistsvg-function-animate
                     data.element.animate(animationDefinition, false);
                 }
             });
 
-            // For the sake of the example we update the chart every time it's created with a delay of 8 seconds
             marvelChart.on('created', function() {
                 if (window.__anim21278907124) {
                     clearTimeout(window.__anim21278907124);
@@ -289,6 +286,16 @@ angular.module("AppManager").controller("crimeSpanUnivStatsGraphCtrl", ["$scope"
                 window.__anim21278907124 = setTimeout(marvelChart.update.bind(marvelChart), 10000);
             });
         });
+        
+
+
+
+
+
+
+
+
+       
 
     });
 }]);
