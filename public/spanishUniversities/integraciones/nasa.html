@@ -1,7 +1,5 @@
-<?php header('Access-Control-Allow-Origin: *'); ?>
-
-
 <link rel="stylesheet" href="/styles_css/css_alvaro/css_alvaro.css" type="text/css" />
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand" href="/#!/">Spanish Universities</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,10 +35,10 @@
             <li class="nav-item">
                 <a class="nav-link" href="/#!/spanishUniversitiesInt6">Integración 8</a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="/#!/spanishUniversitiesInt7">Integración 9</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="/#!/spanishUniversitiesInt8">Integración 10</a>
             </li>
             <li class="nav-item">
@@ -53,36 +51,16 @@
     </div>
 </nav>
 <center>
-    <h1><strong>API alquiler de bicicletas en España</strong></h1>
+    <h1><strong> API Imágenes Marte</strong></h1>
 </center>
 <!--  CHARTS  -->
-<div class="section">
-    <div>
-        <h5>Selecciona una compañía</h5>
+<div class="row">
+    <div class="col">
+        Introducir una fecha.
+        <td> <input class="form-control" style="text-align:center" ng-model="fecha" placeholder="yyyy-MM-dd" /></td>
+        <button class="button btn-sm btn-primary" ng-click="getFecha()">Consultar</button>
     </div>
-    <select class="browser" ng-model="marca">
-        <option value="VaiBike">VaiBike</option>
-        <option value="Bicicoruña"> Bicicoruña</option>
-        <option value="nbici"> nbici</option>
-        <option value="Onroll Via Verde"> Onroll Via Verde</option>
-        <option value="Onroll"> Onroll</option>
-        <option value="Bicileon"> Bicileon</option>
-        <option value="Bizi"> Bizi</option>
-        <option value="Valenbisi"> Valenbisi</option>
-        <option value="Tusbic"> Tusbic</option>
-        <option value="Sevici"> Sevici</option>
-        <option value="Bicipalma"> Bicipalma</option>
-        <option value="Girocleta"> Girocleta</option>
-        <option value="Bicidorm"> Bicidorm</option>
-        <option value="SaforBici"> SaforBici</option>
-        <option value="Gbici"> Gbici</option>
-        <option value="MuyBici"> MuyBici</option>
-        <option value="PonfeMobi"> PonfeMobi</option>
-        <option value="BiciMAD"> BiciMAD</option>
-        <option value="BiciFerrolTerra"> BiciFerrolTerra</option>
-         <option value="Bilbon Bizi"> Bilbon Bizi</option>
-    </select> <button class="button btn-sm btn-primary" ng-click="getBicis()">Consultar</button>
+</div>
 </div>
 
-
-<div id="chartdiv" style="margin: 0 auto; width: 1000px; height: 500px;"></div>
+<div align='center' id='myChart'></div>

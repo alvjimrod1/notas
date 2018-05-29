@@ -84,10 +84,13 @@ angular
                 controller: "bicisCtrl"
             })
             .when("/spanishUniversitiesInt8", {
-                templateUrl: "../spanishUniversities/integraciones/worldBank.html",
-                controller: "worldBankCtrl"
+                templateUrl: "../spanishUniversities/integraciones/nasa.html",
+                controller: "nasaCtrl"
             })
-
+            .when("/spanishUniversitiesInt9", {
+                templateUrl: "../spanishUniversities/integraciones/unionEuropea.html",
+                controller: "unionEuropeaCtrl"
+            })
             /*RAFA*/
             .when("/openSourceContests", {
                 templateUrl: "../openSourceContests/list/list.html",
