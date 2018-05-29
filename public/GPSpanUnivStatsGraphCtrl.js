@@ -61,57 +61,88 @@ angular.module("AppManager").controller("GPSpanUnivStatsGraphCtrl", ["$scope", "
                 years.push(responseGP.data[i].year);
 
             }
+            console.log("Año: ",years.sortNumbers().unique());
 
             for (var i = 0; i < years.sortNumbers().unique().length; i++) {
                 var yearEnrolledNumber = 0;
                 var yearScore = 0;
+                var actualYear=years.sortNumbers().unique()[i];
+                var dataSpanUniv=[];
+                var dataMotoGp=[];
+                var newDataSpanUniv=[];
+                var newDataMotoGp=[];
+                
                 for (var j = 0; j < responseSpanUnivStats.data.length; j++) {
                     if (responseSpanUnivStats.data[j].year == years.sortNumbers().unique()[i]) {
                         yearEnrolledNumber += responseSpanUnivStats.data[j].enrolledNumber;
 
                     }
                 }
+                newDataSpanUniv=[actualYear, yearEnrolledNumber, 10];
+                dataSpanUniv.push(newDataSpanUniv);
+                
                 for (var j = 0; j < responseGP.data.length; j++) {
                     if (responseGP.data[j].year == years.sortNumbers().unique()[i]) {
                         yearScore += responseGP.data[j].score;
                     }
                 }
+                newDataMotoGp= [actualYear, yearScore, 10];
+                dataMotoGp.push(newDataMotoGp);
 
-                totalEnrolledNumber.push(yearEnrolledNumber);
-                totalScore.push(yearScore);
+                //totalEnrolledNumber.push(yearEnrolledNumber);
+                //totalScore.push(yearScore);
 
             }
 
-
-            /*HIGHCHARTS*/
-
+            console.log("dataSpanUniv: ",dataSpanUniv);
+            console.log("dataMotoGp: ",dataMotoGp);
+           
 
             Highcharts.chart('gpSpanUnivStats', {
 
                 chart: {
-                    type: 'column'
+                    type: 'bubble',
+                    plotBorderWidth: 1,
+                    zoomType: 'xy'
                 },
+
                 title: {
-                    text: 'GPStatsApi and SpanUnivStatsApi Integration'
+                    text: 'Highcharts bubbles with radial gradient fill'
                 },
+
                 xAxis: {
-                    categories: years.sortNumbers().unique()
-
+                    gridLineWidth: 1
                 },
+
                 yAxis: {
-                    allowDecimals: false,
-                    title: {
-                        text: 'Enrolled Number and Score'
-                    }
+                    startOnTick: false,
+                    endOnTick: false
                 },
-                series: [{
-                    name: 'Enrolled Number',
-                    data: totalEnrolledNumber
 
+                series: [{
+                    data: dataSpanUniv,
+                    marker: {
+                        fillColor: {
+                            radialGradient: { cx: 0.4, cy: 0.3, r: 0.7 },
+                            stops: [
+                                [0, 'rgba(255,255,255,0.5)'],
+                                [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0.5).get('rgba')]
+                            ]
+                        }
+                    }
                 }, {
-                    name: 'Score',
-                    data: totalScore
+                    data: dataMotoGp,
+                    marker: {
+                        fillColor: {
+                            radialGradient: { cx: 0.4, cy: 0.3, r: 0.7 },
+                            stops: [
+                                [0, 'rgba(255,255,255,0.5)'],
+                                [1, Highcharts.Color(Highcharts.getOptions().colors[1]).setOpacity(0.5).get('rgba')]
+                            ]
+                        }
+                    }
                 }]
+
             });
 
 
