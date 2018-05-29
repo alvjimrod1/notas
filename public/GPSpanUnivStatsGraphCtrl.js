@@ -62,15 +62,17 @@ angular.module("AppManager").controller("GPSpanUnivStatsGraphCtrl", ["$scope", "
 
             }
             console.log("Año: ",years.sortNumbers().unique());
+            
+            var dataSpanUniv=[];
+                var dataMotoGp=[];
+                var newDataSpanUniv=[];
+                var newDataMotoGp=[];
 
             for (var i = 0; i < years.sortNumbers().unique().length; i++) {
                 var yearEnrolledNumber = 0;
                 var yearScore = 0;
                 var actualYear=years.sortNumbers().unique()[i];
-                var dataSpanUniv=[];
-                var dataMotoGp=[];
-                var newDataSpanUniv=[];
-                var newDataMotoGp=[];
+                
                 
                 for (var j = 0; j < responseSpanUnivStats.data.length; j++) {
                     if (responseSpanUnivStats.data[j].year == actualYear) {
