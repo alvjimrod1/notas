@@ -10,7 +10,7 @@ angular.module("AppManager").controller("crimeSpanUnivStatsGraphCtrl", ["$scope"
     var apiCrime = "https://sos1718-07.herokuapp.com/api/v1/global-terrorism-data";
     var apiLibraries = "https://libraries.io/api/platforms"
     var apiMarvel = "http://gateway.marvel.com/v1/public/comics?ts=1&apikey=75b5994400a36403395f755582313fbb&hash=1951d4a03480afc3b7c19e1f6e5b89e4";
-    var apiDayNames = "https://api.abalin.net/get/namedays?day=30&month=5&country=es";
+
 
     $scope.return = function() {
         $location.path("/spanUnivStats");
@@ -294,7 +294,7 @@ angular.module("AppManager").controller("crimeSpanUnivStatsGraphCtrl", ["$scope"
 
 
 
-
+        
        
 
     });

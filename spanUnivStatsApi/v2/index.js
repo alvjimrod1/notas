@@ -26,6 +26,17 @@ spanUnivStatsApi.register = function(app, SpanUNivStatsdb, initialStats) {
        var url = apiServerDayNames + req.url;
        req.pipe(request(url)).pipe(res);
     });
+    
+    /*PROXY JOBS*/
+    var apiServerJobs = "https://jobs.github.com";
+    
+    app.use("/proxyJobs", function(req,res){
+        var url = apiServerJobs + req.url;
+        req.pipe(request(url)).pipe(res);
+    });
+
+
+
 
 
     ///////////// REDIRECT

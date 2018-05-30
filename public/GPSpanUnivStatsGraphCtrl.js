@@ -10,6 +10,7 @@ angular.module("AppManager").controller("GPSpanUnivStatsGraphCtrl", ["$scope", "
     var apiSpanUnivStats = "/api/v2/span-univ-stats";
     var apiGP = "/proxyGP/api/v1/motogp-stats";
     var apiDayNames = "/proxyDayNames/get/namedays?day=30&month=5&country=es";
+    var apiJobs = "/proxyJobs/positions.json?description=java&location=spain";
 
 
     $scope.return = function() {
@@ -55,7 +56,16 @@ angular.module("AppManager").controller("GPSpanUnivStatsGraphCtrl", ["$scope", "
         }
 
 
-        /* GP STATS*/
+
+
+
+
+
+
+
+        /*  1) GP STATS */
+
+
         $http.get(apiGP).then(function(responseGP) {
 
 
@@ -98,6 +108,9 @@ angular.module("AppManager").controller("GPSpanUnivStatsGraphCtrl", ["$scope", "
 
             console.log("dataSpanUniv: ", dataSpanUniv);
             console.log("dataMotoGp: ", dataMotoGp);
+
+
+            /* HIGHCHART */
 
 
             Highcharts.chart('gpSpanUnivStats', {
@@ -154,32 +167,38 @@ angular.module("AppManager").controller("GPSpanUnivStatsGraphCtrl", ["$scope", "
 
 
 
-        /* 4) DAYNAMES API */
+
+
+
+
+        /* 2) DAYNAMES API */
 
 
         $http.get(apiDayNames).then(function(responseDayNames) {
-           
+
 
             console.log("responseDayNames: ", responseDayNames.data.data["name_es"]);
-            
-            
+
+
             var objectDayNames = {};
-            var namesNumber =  responseDayNames.data.data["name_es"].split(",").length + 3000;
+            var namesNumber = responseDayNames.data.data["name_es"].split(",").length + 3000;
             objectDayNames["y"] = namesNumber;
             objectDayNames["name"] = "Names";
-           
+
             var objectSpan = {};
             var fSCycleNumber = responseSpanUnivStats.data[0].firstSecondCycle;
             objectSpan["y"] = fSCycleNumber;
             objectSpan["name"] = "FSCycle";
-            
+
             var objectList = [];
             objectList.push(objectDayNames);
             objectList.push(objectSpan);
-            console.log("objectList: ", objectList);
+
+
+            /* CANVASJS */
 
             var chart = new CanvasJS.Chart("DayNamesChart", {
-                theme: "dark2",
+                theme: "light2",
                 exportFileName: "Doughnut Chart",
                 exportEnabled: true,
                 animationEnabled: true,
@@ -211,6 +230,76 @@ angular.module("AppManager").controller("GPSpanUnivStatsGraphCtrl", ["$scope", "
                 e.chart.render();
             }
         });
+
+
+
+
+
+
+
+
+
+        /* 3) JOBS API */
+
+        $http.get(apiJobs).then(function(responseJobs) {
+            console.log("responseJobs : ", responseJobs.data);
+
+            var listObjbects = [];
+
+            var objectDegree = {};
+            var objectMaster = {};
+            var objectJobs = {};
+
+            objectDegree["y"] = responseSpanUnivStats.data[0].degree-2000;
+            objectDegree["label"] = "Degree Number";
+
+            objectMaster["y"] = responseSpanUnivStats.data[0].master + 5500;
+            objectMaster["label"] = "Master Number";
+
+            objectJobs["y"] = responseJobs.data.length + 5500;
+            objectJobs["label"] = "Java jobs in Spain"
+
+            listObjbects.push(objectDegree);
+            listObjbects.push(objectMaster);
+            listObjbects.push(objectJobs);
+            
+            
+            /* CANVASJS */
+
+
+            var chart = new CanvasJS.Chart("jobsChart", {
+                animationEnabled: true,
+                theme: "light2", //"light1", "dark1", "dark2"
+                title: {
+                    text: "JobsApi and SpanUnivStatsApi Integration"
+                },
+                data: [{
+                    type: "funnel",
+                    indexLabelPlacement: "inside",
+                    indexLabelFontColor: "white",
+                    toolTipContent: "<b>{label}</b>: {y} <b>({percentage}%)</b>",
+                    indexLabel: "{label} ({percentage}%)",
+                    dataPoints:listObjbects
+                }]
+            });
+            calculatePercentage();
+            chart.render();
+
+            function calculatePercentage() {
+                var dataPoint = chart.options.data[0].dataPoints;
+                var total = dataPoint[0].y;
+                for (var i = 0; i < dataPoint.length; i++) {
+                    if (i == 0) {
+                        chart.options.data[0].dataPoints[i].percentage = 100;
+                    }
+                    else {
+                        chart.options.data[0].dataPoints[i].percentage = ((dataPoint[i].y / total) * 100).toFixed(2);
+                    }
+                }
+            }
+        });
+
+
 
     });
 }]);
