@@ -49,7 +49,7 @@ angular.module("AppManager").controller("crimeSpanUnivStatsGraphCtrl", ["$scope"
             years.push(responseSpanUnivStats.data[i].year);
 
         }
-        
+
 
 
 
@@ -70,24 +70,28 @@ angular.module("AppManager").controller("crimeSpanUnivStatsGraphCtrl", ["$scope"
                 years.push(responseCrime.data[i].iyear);
 
             }
+            
+            var actualYear = 0;
 
             for (var i = 0; i < years.sortNumbers().unique().length; i++) {
                 var yearEnrolledNumber = 0;
                 var yearKillsNumber = 0;
+                actualYear = years.sortNumbers().unique()[i];
+                
                 for (var j = 0; j < responseSpanUnivStats.data.length; j++) {
-                    if (responseSpanUnivStats.data[j].year == years.sortNumbers().unique()[i]) {
+                    if (responseSpanUnivStats.data[j].year == actualYear) {
                         yearEnrolledNumber += responseSpanUnivStats.data[j].enrolledNumber;
 
                     }
                 }
                 for (var j = 0; j < responseCrime.data.length; j++) {
-                    if (responseCrime.data[j].iyear == years.sortNumbers().unique()[i]) {
+                    if (responseCrime.data[j].iyear == actualYear) {
                         yearKillsNumber += responseCrime.data[j].nkill;
                     }
                 }
 
-                totalEnrolledNumber.push(yearEnrolledNumber);
-                totalKills.push(yearKillsNumber);
+                totalEnrolledNumber.push([actualYear,yearEnrolledNumber]);
+                totalKills.push([actualYear,yearKillsNumber]);
 
             }
 
@@ -96,56 +100,80 @@ angular.module("AppManager").controller("crimeSpanUnivStatsGraphCtrl", ["$scope"
 
             /*HIGHCHARTS*/
 
+
             Highcharts.chart('crimeSpanUnivStats', {
                 chart: {
-                    type: 'area'
+                    type: 'scatter',
+                    zoomType: 'xy'
                 },
                 title: {
                     text: 'FootballStatsApi and SpanUnivStatsApi Integration'
                 },
                 xAxis: {
-                    allowDecimals: false,
-                    labels: {
-                        formatter: function() {
-                            return this.value; // clean, unformatted number for year
-                        }
+                    title: {
+                        enabled: true,
+                        text: 'Years'
                     },
-                    categories: years.sortNumbers().unique()
-
+                    startOnTick: true,
+                    endOnTick: true,
+                    showLastLabel: true
                 },
                 yAxis: {
                     title: {
-                        text: 'Enrolled and Kills number'
-                    },
+                        text: 'Data'
+                    }
                 },
-                tooltip: {
-                    pointFormat: '{series.name} had stockpiled <b>{point.y:,.0f}</b><br/>warheads in {point.x}'
+                legend: {
+                    layout: 'vertical',
+                    align: 'left',
+                    verticalAlign: 'top',
+                    x: 100,
+                    y: 70,
+                    floating: true,
+                    backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF',
+                    borderWidth: 1
                 },
                 plotOptions: {
-                    area: {
+                    scatter: {
                         marker: {
-                            enabled: false,
-                            symbol: 'circle',
-                            radius: 2,
+                            radius: 5,
                             states: {
                                 hover: {
-                                    enabled: true
+                                    enabled: true,
+                                    lineColor: 'rgb(100,100,100)'
                                 }
                             }
+                        },
+                        states: {
+                            hover: {
+                                marker: {
+                                    enabled: false
+                                }
+                            }
+                        },
+                        tooltip: {
+                            headerFormat: '<b>{series.name}</b><br>',
+                            pointFormat: '{point.x} , {point.y}'
                         }
                     }
                 },
                 series: [{
-                    name: 'Enrolled Number',
+                    name: 'EnrolledNumber',
+                    color: 'rgba(223, 83, 83, .5)',
                     data: totalEnrolledNumber
 
                 }, {
-                    name: 'Crime Number',
+                    name: 'Kills',
+                    color: 'rgba(119, 152, 191, .5)',
                     data: totalKills
                 }]
             });
+
+
+
+
         });
-        
+
 
 
 
@@ -205,7 +233,7 @@ angular.module("AppManager").controller("crimeSpanUnivStatsGraphCtrl", ["$scope"
 
             new Chartist.Bar('.ct-chart', data, options, responsiveOptions);
         });
-        
+
 
 
 
@@ -219,29 +247,29 @@ angular.module("AppManager").controller("crimeSpanUnivStatsGraphCtrl", ["$scope"
 
         $http.get(apiMarvel).then(function(responseMarvel) {
             console.log("Results Marvel´s comics:", responseMarvel.data.data.results);
-            var firstSecondCycleNumber=0;
+            var firstSecondCycleNumber = 0;
             var issueNumbers = 0;
             var masterNumber = 0;
-            var seriesData=[];
-            
-            for(var i = 0 ; i < responseMarvel.data.data.results.length ; i++){
+            var seriesData = [];
+
+            for (var i = 0; i < responseMarvel.data.data.results.length; i++) {
                 issueNumbers += responseMarvel.data.data.results[i].issueNumber;
             }
-            for( var j = 0 ; j < responseSpanUnivStats.data.length ; j++){
+            for (var j = 0; j < responseSpanUnivStats.data.length; j++) {
                 firstSecondCycleNumber += responseSpanUnivStats.data[j].firstSecondCycle;
                 masterNumber += responseSpanUnivStats.data[j].master;
             }
-            
-            seriesData.push(issueNumbers+100000);
+
+            seriesData.push(issueNumbers + 100000);
             seriesData.push(firstSecondCycleNumber);
             seriesData.push(masterNumber);
-            
-            
+
+
             /*CHARTIST*/
 
             var marvelChart = new Chartist.Pie('.ct-chart1', {
                 series: seriesData,
-                labels: ["MarvelApi","MyApi-FSCycle", "MyApi-Master"]
+                labels: ["MarvelApi", "MyApi-FSCycle", "MyApi-Master"]
             }, {
                 donut: true,
                 showLabel: true
@@ -286,7 +314,6 @@ angular.module("AppManager").controller("crimeSpanUnivStatsGraphCtrl", ["$scope"
                 window.__anim21278907124 = setTimeout(marvelChart.update.bind(marvelChart), 10000);
             });
         });
-        
 
 
 
@@ -294,8 +321,9 @@ angular.module("AppManager").controller("crimeSpanUnivStatsGraphCtrl", ["$scope"
 
 
 
-        
-       
+
+
+
 
     });
 }]);
