@@ -13,6 +13,7 @@ angular.module("AppManager").controller("GPSpanUnivStatsGraphCtrl", ["$scope", "
     var apiDayNames = "/proxyDayNames/get/namedays?day=30&month=5&country=es";
     var apiJobs = "/proxyJobs/positions.json?description=java&location=spain";
     var apiAttacks = "/proxyAttacks/api/v1/attacks-data";
+    var apiBaseball = "/proxyBaseball/api/v2/baseball-stats";
 
 
     $scope.return = function() {
@@ -75,7 +76,7 @@ angular.module("AppManager").controller("GPSpanUnivStatsGraphCtrl", ["$scope", "
                 years.push(responseGP.data[i].year);
 
             }
-            console.log("Año: ", years.sortNumbers().unique());
+
 
             var dataSpanUniv = [];
             var dataMotoGp = [];
@@ -108,8 +109,7 @@ angular.module("AppManager").controller("GPSpanUnivStatsGraphCtrl", ["$scope", "
 
             }
 
-            console.log("dataSpanUniv: ", dataSpanUniv);
-            console.log("dataMotoGp: ", dataMotoGp);
+
 
 
             /* HIGHCHART */
@@ -261,9 +261,8 @@ angular.module("AppManager").controller("GPSpanUnivStatsGraphCtrl", ["$scope", "
             objectJobs["y"] = responseJobs.data.length + 5500;
             objectJobs["label"] = "Java jobs in Spain"
 
-            listObjbects.push(objectDegree);
-            listObjbects.push(objectMaster);
-            listObjbects.push(objectJobs);
+            listObjbects.push(objectDegree, objectMaster, objectJobs);
+
 
 
             /* CANVASJS */
@@ -314,46 +313,46 @@ angular.module("AppManager").controller("GPSpanUnivStatsGraphCtrl", ["$scope", "
 
         $http.get(apiAttacks).then(function(responseAttacks) {
             console.log("responseAttacks : ", responseAttacks.data);
-            
+
             var objectList = [];
             var totalMaster = 0;
             var totalInjured = 0;
-            
-            for (var i = 0 ; i < responseSpanUnivStats.data.length ; i++){
+
+            for (var i = 0; i < responseSpanUnivStats.data.length; i++) {
                 totalMaster += responseSpanUnivStats.data[i].master;
             }
-            
-            for (var i = 0 ; i < responseAttacks.data.length ; i++){
+
+            for (var i = 0; i < responseAttacks.data.length; i++) {
                 totalInjured += responseAttacks.data[i].injured;
             }
-            
+
             var objectAttack = {};
             objectAttack["name"] = "Attacks-TotalInjured";
             objectAttack["open"] = 0;
             objectAttack["close"] = totalInjured;
             objectAttack["color"] = "#169b2f";
             objectAttack["balloonValue"] = totalInjured;
-            
-            
+
+
             var objectDiference = {};
             objectDiference["name"] = "Diference";
-            objectDiference["open"] = Math.min(totalInjured,totalMaster);
-            objectDiference["close"] = Math.max(totalInjured,totalMaster);
+            objectDiference["open"] = Math.min(totalInjured, totalMaster);
+            objectDiference["close"] = Math.max(totalInjured, totalMaster);
             objectDiference["color"] = "#1c8ceb";
-            objectDiference["balloonValue"] = Math.abs(totalInjured-totalMaster);
-            
-            
+            objectDiference["balloonValue"] = Math.abs(totalInjured - totalMaster);
+
+
             var objectSpanUniv = {};
             objectSpanUniv["name"] = "SpanUnivStats-TotalMaster";
             objectSpanUniv["open"] = 0;
             objectSpanUniv["close"] = totalMaster;
             objectSpanUniv["color"] = "#1c8ceb";
             objectSpanUniv["balloonValue"] = totalMaster;
-            
-            
-            objectList.push(objectAttack,objectDiference,objectSpanUniv);
-            
-            console.log("ObjectList--------------->", objectList);
+
+
+            objectList.push(objectAttack, objectDiference, objectSpanUniv);
+
+
 
             /* AMCHART */
 
@@ -420,6 +419,97 @@ angular.module("AppManager").controller("GPSpanUnivStatsGraphCtrl", ["$scope", "
 
         });
 
+
+
+
+
+
+
+
+
+        /* 4) BASEBALL API */
+
+
+        $http.get(apiBaseball).then(function(responseBaseball) {
+
+            console.log("responseBaseball  : ", responseBaseball.data);
+
+            var years = [];
+            var dateYear = 0;
+
+            responseSpanUnivStats.data.forEach((stat) => {
+                years.push(stat.year);
+            });
+            responseBaseball.data.forEach((stat) => {
+                dateYear = parseInt(stat.date.substr(0, 4));
+                years.push(dateYear);
+            });
+
+            years = years.sortNumbers().unique();
+
+            var degreeYear = [];
+            var hitYear = [];
+            var totalDegree = 0;
+            var totalHit = 0;
+
+            years.forEach((y)=>{
+               totalDegree=0;
+               responseSpanUnivStats.data.forEach((stat)=>{
+                   if(stat.year == y ){
+                       totalDegree += stat.degree;
+                   }
+               });
+               degreeYear.push([y,totalDegree]);
+               totalHit=0;
+               responseBaseball.data.forEach((bs)=>{
+                  if(parseInt(bs.date.substr(0,4))==y){
+                      totalHit += parseInt(bs.hit);
+                  } 
+               });
+               hitYear.push([y,totalHit]);
+            });
+
+            
+
+            /* AMCHART */
+
+
+            var chart = AmCharts.makeChart("baseballChart", {
+                "type": "radar",
+                "theme": "light",
+                "dataProvider": [],
+                "valueAxes": [{
+                    "gridType": "circles",
+                    "minimum": 0
+                }],
+                "startDuration": 1,
+                "polarScatter": {
+                    "minimum": 0,
+                    "maximum": 2018,
+                    "step": 1
+                },
+                "legend": {
+                    "position": "right"
+                },
+                "graphs": [{
+                    "title": "SpanUnivStats Degree",
+                    "balloonText": "[[category]]: [[value]] ",
+                    "bullet": "round",
+                    "lineAlpha": 0,
+                    "series": degreeYear
+                }, {
+                    "title": "Baseball Hit",
+                    "balloonText": "[[category]]: [[value]] ",
+                    "bullet": "round",
+                    "lineAlpha": 0,
+                    "series": hitYear
+                }],
+                "export": {
+                    "enabled": true
+                }
+            });
+
+        });
 
 
     });
