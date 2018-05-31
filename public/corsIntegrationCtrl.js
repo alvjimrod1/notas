@@ -4,7 +4,7 @@
 /* global google */
 /* global Chartist */
 
-angular.module("AppManager").controller("crimeSpanUnivStatsGraphCtrl", ["$scope", "$http", "$location", function($scope, $http, $location) {
+angular.module("AppManager").controller("corsIntegrationCtrl", ["$scope", "$http", "$location", function($scope, $http, $location) {
     console.log("Graph Controller Initialized!");
     var apiSpanUnivStats = "/api/v2/span-univ-stats";
     var apiCrime = "https://sos1718-07.herokuapp.com/api/v1/global-terrorism-data";

@@ -22,14 +22,14 @@ angular
                 templateUrl: "spanUnivStatsGraphs.html",
                 controller: "spanUnivStatsGraphsCtrl"
             })
-            .when("/crimeSpanUnivStats", {
-                templateUrl: "crimeSpanUnivStatsGraph.html",
-                controller: "crimeSpanUnivStatsGraphCtrl"
+            .when("/corsIntegration", {
+                templateUrl: "corsIntegration.html",
+                controller: "corsIntegrationCtrl"
 
             })
-            .when("/GPSpanUnivStats", {
-                templateUrl: "GPSpanUnivStatsGraph.html",
-                controller: "GPSpanUnivStatsGraphCtrl"
+            .when("/proxyIntegrations", {
+                templateUrl: "proxyIntegrations.html",
+                controller: "proxyIntegrationsCtrl"
 
 
 

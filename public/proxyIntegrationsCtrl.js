@@ -6,7 +6,7 @@
 /* global CanvasJS */
 /* global AmCharts */
 
-angular.module("AppManager").controller("GPSpanUnivStatsGraphCtrl", ["$scope", "$http", "$location", function($scope, $http, $location) {
+angular.module("AppManager").controller("proxyIntegrationsCtrl", ["$scope", "$http", "$location", function($scope, $http, $location) {
     console.log("Graph Controller Initialized!");
     var apiSpanUnivStats = "/api/v2/span-univ-stats";
     var apiGP = "/proxyGP/api/v1/motogp-stats";
