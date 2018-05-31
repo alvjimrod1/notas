@@ -29,7 +29,7 @@ angular.module("AppManager").controller("spanishUniversitiesGraphsApiProxyCtrl",
         }
         // var totalPublicas = [];
         /*API MIA */
-        var int = [];
+        var int1 = [];
         for (var i = 0; i < comunidades.unique().length; i++) {
             var cont = 0;
 
@@ -39,11 +39,11 @@ angular.module("AppManager").controller("spanishUniversitiesGraphsApiProxyCtrl",
                 }
             }
 
-            int.push(cont);
+            int1.push(cont);
             total.push([comunidades.sort().unique()[i], cont]);
         }
 
-        console.log(int);
+        console.log(int1);
         console.log(comunidades.unique());
 
 
@@ -54,7 +54,16 @@ angular.module("AppManager").controller("spanishUniversitiesGraphsApiProxyCtrl",
             }
             console.log("PROVINCES ANTONIO: " + provincesAntonio.sort().unique())
 
-            var int = [];
+
+
+
+            console.log("AQUI ESTA TOTAL A 0")
+            console.log(total)
+
+            var int2 = [];
+            for (var i = 0; i < comunidades.unique().length; i++) {
+                int2.push(null);
+            }
             for (var i = 0; i < provincesAntonio.unique().length; i++) {
                 var cont = 0;
 
@@ -64,77 +73,61 @@ angular.module("AppManager").controller("spanishUniversitiesGraphsApiProxyCtrl",
                     }
                 }
 
-                int.push(cont);
-                total.push([provincesAntonio.sort().unique()[i], cont]);
+                int2.push(cont);
+                total.concat([provincesAntonio.sort().unique()[i], cont]);
             }
 
-            console.log(int);
+            console.log(int2);
             console.log(provincesAntonio.unique());
             console.log("EOEOEOEO" + (total));
+            var provincesTotal = comunidades.concat(provincesAntonio)
 
-            // totalComProv.push(comunidades.unique().sort());
-            // totalComProv.push(provincesAntonio.unique().sort());
-            // console.log("IIIIIIIII==>    " + totalComProv)
-            ///HIGHCHARTS 2 PROXY ///
-
-            Highcharts.chart('container1', {
-                chart: {
-                    type: 'area',
-                    spacingBottom: 30
+            /*CHART */
+            var myChart = {
+                "type": "scatter",
+                "title": {
+                    "text": ""
                 },
-                title: {
-                    text: 'Integracion numero universidades en com autonomas/ consumo de ciudades'
-                },
-                subtitle: {
-                    text: '',
-                    floating: true,
-                    align: 'right',
-                    verticalAlign: 'bottom',
-                    y: 15
-                },
-                legend: {
-                    layout: 'vertical',
-                    align: 'left',
-                    verticalAlign: 'top',
-                    x: 150,
-                    y: 100,
-                    floating: true,
-                    borderWidth: 1,
-                    backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
-                },
-                xAxis: {
-                    categories: comunidades.unique().concat(provincesAntonio.unique())
-                },
-                yAxis: {
-                    title: {
-                        text: 'Y-Axis'
+                "plot": {
+                    "value-box": {
+                        "text": "%v"
                     },
-                    labels: {
-                        formatter: function() {
-                            return this.value;
-                        }
+                    "tooltip": {
+                        "text": "%v"
                     }
                 },
-                tooltip: {
-                    formatter: function() {
-                        return '<b>' + this.series.name + '</b><br/>' +
-                            this.x + ': ' + this.y;
+                "legend": {
+                    "toggle-action": "hide",
+                    "header": {
+                        "text": "Legend Header"
+                    },
+                    "item": {
+                        "cursor": "pointer"
+                    },
+                    "draggable": true,
+                    "drag-handler": "icon"
+                },
+                "scale-x": {
+                    "values": provincesTotal.unique()
+                },
+                "series": [{
+                        "values": int1,
+                        "text": "Spanish universities",
+                        "palette": 0
+                    },
+                    {
+                        "values": int2,
+                        "text": "Peak power",
+                        "palette": 1
                     }
-                },
-                plotOptions: {
-                    area: {
-                        fillOpacity: 0.1
-                    }
-                },
-                credits: {
-                    enabled: false
-                },
-                series: [{
-                    name: 'Nª univs/peakPower:',
-                    data: total
-                }, ]
+                ]
+            };
+            zingchart.render({
+                id: "myChart",
+                data: myChart,
+                height: "480",
+                width: "100%"
             });
-
 
         });
     });
