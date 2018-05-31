@@ -314,50 +314,53 @@ angular.module("AppManager").controller("GPSpanUnivStatsGraphCtrl", ["$scope", "
 
         $http.get(apiAttacks).then(function(responseAttacks) {
             console.log("responseAttacks : ", responseAttacks.data);
+            
+            var objectList = [];
+            var totalMaster = 0;
+            var totalInjured = 0;
+            
+            for (var i = 0 ; i < responseSpanUnivStats.data.length ; i++){
+                totalMaster += responseSpanUnivStats.data[i].master;
+            }
+            
+            for (var i = 0 ; i < responseAttacks.data.length ; i++){
+                totalInjured += responseAttacks.data[i].injured;
+            }
+            
+            var objectAttack = {};
+            objectAttack["name"] = "Attacks-TotalInjured";
+            objectAttack["open"] = 0;
+            objectAttack["close"] = totalInjured;
+            objectAttack["color"] = "#169b2f";
+            objectAttack["balloonValue"] = totalInjured;
+            
+            
+            var objectDiference = {};
+            objectDiference["name"] = "Diference";
+            objectDiference["open"] = Math.min(totalInjured,totalMaster);
+            objectDiference["close"] = Math.max(totalInjured,totalMaster);
+            objectDiference["color"] = "#1c8ceb";
+            objectDiference["balloonValue"] = Math.abs(totalInjured-totalMaster);
+            
+            
+            var objectSpanUniv = {};
+            objectSpanUniv["name"] = "SpanUnivStats-TotalMaster";
+            objectSpanUniv["open"] = 0;
+            objectSpanUniv["close"] = totalMaster;
+            objectSpanUniv["color"] = "#1c8ceb";
+            objectSpanUniv["balloonValue"] = totalMaster;
+            
+            
+            objectList.push(objectAttack,objectDiference,objectSpanUniv);
+            
+            console.log("ObjectList--------------->", objectList);
 
-
-
+            /* AMCHART */
 
             var chart = AmCharts.makeChart("attackChart", {
                 "type": "serial",
                 "theme": "light",
-                "dataProvider": [{
-                    "name": "Income A",
-                    "open": 0,
-                    "close": 11.13,
-                    "color": "#54cb6a",
-                    "balloonValue": 11.13
-                }, {
-                    "name": "Income B",
-                    "open": 11.13,
-                    "close": 15.81,
-                    "color": "#54cb6a",
-                    "balloonValue": 4.68
-                }, {
-                    "name": "Total Income",
-                    "open": 0,
-                    "close": 15.81,
-                    "color": "#169b2f",
-                    "balloonValue": 15.81
-                }, {
-                    "name": "Expenses A",
-                    "open": 12.92,
-                    "close": 15.81,
-                    "color": "#cc4b48",
-                    "balloonValue": 2.89
-                }, {
-                    "name": "Expenses B",
-                    "open": 8.64,
-                    "close": 12.92,
-                    "color": "#cc4b48",
-                    "balloonValue": 4.24
-                }, {
-                    "name": "Revenue",
-                    "open": 0,
-                    "close": 8.64,
-                    "color": "#1c8ceb",
-                    "balloonValue": 11.13
-                }],
+                "dataProvider": objectList,
                 "valueAxes": [{
                     "axisAlpha": 0,
                     "gridAlpha": 0.1,
