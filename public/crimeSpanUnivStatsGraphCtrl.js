@@ -8,9 +8,9 @@ angular.module("AppManager").controller("crimeSpanUnivStatsGraphCtrl", ["$scope"
     console.log("Graph Controller Initialized!");
     var apiSpanUnivStats = "/api/v2/span-univ-stats";
     var apiCrime = "https://sos1718-07.herokuapp.com/api/v1/global-terrorism-data";
-    var apiLibraries = "https://libraries.io/api/platforms"
+    var apiLibraries = "https://libraries.io/api/platforms";
     var apiMarvel = "http://gateway.marvel.com/v1/public/comics?ts=1&apikey=75b5994400a36403395f755582313fbb&hash=1951d4a03480afc3b7c19e1f6e5b89e4";
-
+    
 
     $scope.return = function() {
         $location.path("/spanUnivStats");
@@ -70,14 +70,14 @@ angular.module("AppManager").controller("crimeSpanUnivStatsGraphCtrl", ["$scope"
                 years.push(responseCrime.data[i].iyear);
 
             }
-            
+
             var actualYear = 0;
 
             for (var i = 0; i < years.sortNumbers().unique().length; i++) {
                 var yearEnrolledNumber = 0;
                 var yearKillsNumber = 0;
                 actualYear = years.sortNumbers().unique()[i];
-                
+
                 for (var j = 0; j < responseSpanUnivStats.data.length; j++) {
                     if (responseSpanUnivStats.data[j].year == actualYear) {
                         yearEnrolledNumber += responseSpanUnivStats.data[j].enrolledNumber;
@@ -90,8 +90,8 @@ angular.module("AppManager").controller("crimeSpanUnivStatsGraphCtrl", ["$scope"
                     }
                 }
 
-                totalEnrolledNumber.push([actualYear,yearEnrolledNumber]);
-                totalKills.push([actualYear,yearKillsNumber]);
+                totalEnrolledNumber.push([actualYear, yearEnrolledNumber]);
+                totalKills.push([actualYear, yearKillsNumber]);
 
             }
 
@@ -314,12 +314,6 @@ angular.module("AppManager").controller("crimeSpanUnivStatsGraphCtrl", ["$scope"
                 window.__anim21278907124 = setTimeout(marvelChart.update.bind(marvelChart), 10000);
             });
         });
-
-
-
-
-
-
 
 
 

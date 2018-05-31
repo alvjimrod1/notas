@@ -34,6 +34,14 @@ spanUnivStatsApi.register = function(app, SpanUNivStatsdb, initialStats) {
         var url = apiServerJobs + req.url;
         req.pipe(request(url)).pipe(res);
     });
+    
+    /*PROXY ATTACKS*/
+    var apiServerAttacks = "https://sos1718-07.herokuapp.com";
+    
+    app.use("/proxyAttacks", function(req,res){
+        var url = apiServerAttacks + req.url;
+        req.pipe(request(url)).pipe(res);
+    });
 
 
 

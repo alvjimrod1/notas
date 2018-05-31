@@ -4,6 +4,7 @@
 /* global google */
 /* global Chartist */
 /* global CanvasJS */
+/* global AmCharts */
 
 angular.module("AppManager").controller("GPSpanUnivStatsGraphCtrl", ["$scope", "$http", "$location", function($scope, $http, $location) {
     console.log("Graph Controller Initialized!");
@@ -11,6 +12,7 @@ angular.module("AppManager").controller("GPSpanUnivStatsGraphCtrl", ["$scope", "
     var apiGP = "/proxyGP/api/v1/motogp-stats";
     var apiDayNames = "/proxyDayNames/get/namedays?day=30&month=5&country=es";
     var apiJobs = "/proxyJobs/positions.json?description=java&location=spain";
+    var apiAttacks = "/proxyAttacks/api/v1/attacks-data";
 
 
     $scope.return = function() {
@@ -250,7 +252,7 @@ angular.module("AppManager").controller("GPSpanUnivStatsGraphCtrl", ["$scope", "
             var objectMaster = {};
             var objectJobs = {};
 
-            objectDegree["y"] = responseSpanUnivStats.data[0].degree-2000;
+            objectDegree["y"] = responseSpanUnivStats.data[0].degree - 2000;
             objectDegree["label"] = "Degree Number";
 
             objectMaster["y"] = responseSpanUnivStats.data[0].master + 5500;
@@ -262,8 +264,8 @@ angular.module("AppManager").controller("GPSpanUnivStatsGraphCtrl", ["$scope", "
             listObjbects.push(objectDegree);
             listObjbects.push(objectMaster);
             listObjbects.push(objectJobs);
-            
-            
+
+
             /* CANVASJS */
 
 
@@ -279,7 +281,7 @@ angular.module("AppManager").controller("GPSpanUnivStatsGraphCtrl", ["$scope", "
                     indexLabelFontColor: "white",
                     toolTipContent: "<b>{label}</b>: {y} <b>({percentage}%)</b>",
                     indexLabel: "{label} ({percentage}%)",
-                    dataPoints:listObjbects
+                    dataPoints: listObjbects
                 }]
             });
             calculatePercentage();
@@ -297,6 +299,122 @@ angular.module("AppManager").controller("GPSpanUnivStatsGraphCtrl", ["$scope", "
                     }
                 }
             }
+        });
+
+
+
+
+
+
+
+
+
+        /* 4) ATTACKS API */
+
+
+        $http.get(apiAttacks).then(function(responseAttacks) {
+            console.log("responseAttacks : ", responseAttacks.data);
+
+
+
+
+            var chart = AmCharts.makeChart("attackChart", {
+                "type": "serial",
+                "theme": "light",
+                "dataProvider": [{
+                    "name": "Income A",
+                    "open": 0,
+                    "close": 11.13,
+                    "color": "#54cb6a",
+                    "balloonValue": 11.13
+                }, {
+                    "name": "Income B",
+                    "open": 11.13,
+                    "close": 15.81,
+                    "color": "#54cb6a",
+                    "balloonValue": 4.68
+                }, {
+                    "name": "Total Income",
+                    "open": 0,
+                    "close": 15.81,
+                    "color": "#169b2f",
+                    "balloonValue": 15.81
+                }, {
+                    "name": "Expenses A",
+                    "open": 12.92,
+                    "close": 15.81,
+                    "color": "#cc4b48",
+                    "balloonValue": 2.89
+                }, {
+                    "name": "Expenses B",
+                    "open": 8.64,
+                    "close": 12.92,
+                    "color": "#cc4b48",
+                    "balloonValue": 4.24
+                }, {
+                    "name": "Revenue",
+                    "open": 0,
+                    "close": 8.64,
+                    "color": "#1c8ceb",
+                    "balloonValue": 11.13
+                }],
+                "valueAxes": [{
+                    "axisAlpha": 0,
+                    "gridAlpha": 0.1,
+                    "position": "left"
+                }],
+                "startDuration": 1,
+                "graphs": [{
+                    "balloonText": "<span style='color:[[color]]'>[[category]]</span><br><b>$[[balloonValue]] Mln</b>",
+                    "colorField": "color",
+                    "fillAlphas": 0.8,
+                    "labelText": "$[[balloonValue]]",
+                    "lineColor": "#BBBBBB",
+                    "openField": "open",
+                    "type": "column",
+                    "valueField": "close"
+                }],
+                "trendLines": [{
+                    "dashLength": 3,
+                    "finalCategory": "Income B",
+                    "finalValue": 11.13,
+                    "initialCategory": "Income A",
+                    "initialValue": 11.13,
+                    "lineColor": "#888888"
+                }, {
+                    "dashLength": 3,
+                    "finalCategory": "Expenses A",
+                    "finalValue": 15.81,
+                    "initialCategory": "Income B",
+                    "initialValue": 15.81,
+                    "lineColor": "#888888"
+                }, {
+                    "dashLength": 3,
+                    "finalCategory": "Expenses B",
+                    "finalValue": 12.92,
+                    "initialCategory": "Expenses A",
+                    "initialValue": 12.92,
+                    "lineColor": "#888888"
+                }, {
+                    "dashLength": 3,
+                    "finalCategory": "Revenue",
+                    "finalValue": 8.64,
+                    "initialCategory": "Expenses B",
+                    "initialValue": 8.64,
+                    "lineColor": "#888888"
+                }],
+                "columnWidth": 0.6,
+                "categoryField": "name",
+                "categoryAxis": {
+                    "gridPosition": "start",
+                    "axisAlpha": 0,
+                    "gridAlpha": 0.1
+                },
+                "export": {
+                    "enabled": true
+                }
+            });
+
         });
 
 
