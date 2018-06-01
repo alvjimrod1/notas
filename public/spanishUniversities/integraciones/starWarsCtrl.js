@@ -44,7 +44,7 @@ angular.module("AppManager").controller("starWarsCtrl", ["$scope", "$http", "$lo
                 onmouseout: function(d, i) { console.log("onmouseout", d, i); }
             },
             donut: {
-                title: "Iris Petal Width"
+                title: "StarWars character's height"
             }
         });
 

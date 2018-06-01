@@ -4,9 +4,9 @@
 
 angular.module("AppManager").controller("cervezasCtrl", ["$scope", "$http", "$location", function($scope, $http, $location) {
     console.log("Graph CORS Controller Initialized!");
-    var api = "https://lcboapi.com/products?access_key=MDoyMDNkODc1OC02MDA1LTExZTgtYTA0My1kZjUxYWMxN2Q3YjE6eGlGd2hsQm4zdTVkVkl1dWExcUIzaVFPekFUSHdURkZDaXZj";
+    // var api = "https://lcboapi.com/products?access_key=MDoyMDNkODc1OC02MDA1LTExZTgtYTA0My1kZjUxYWMxN2Q3YjE6eGlGd2hsQm4zdTVkVkl1dWExcUIzaVFPekFUSHdURkZDaXZj";
     /* HEROKU*/
-    //var api = "https://lcboapi.com/products?access_key=MDo0ZjY5ZWQwMi02MTkzLTExZTgtODFlYi1iMzQ2OWRkNGU4YTA6aGhBVmJMNkJkSTNuWGNJeW5GRkk2ZHo4S3FyUWZUakRnZlhY";
+    var api = "https://lcboapi.com/products?access_key=MDo0ZjY5ZWQwMi02MTkzLTExZTgtODFlYi1iMzQ2OWRkNGU4YTA6aGhBVmJMNkJkSTNuWGNJeW5GRkk2ZHo4S3FyUWZUakRnZlhY";
 
     $http.get(api).then(function(response) {
         var volumenInventario = [];
@@ -42,7 +42,7 @@ angular.module("AppManager").controller("cervezasCtrl", ["$scope", "$http", "$lo
                 id: 'wealth-pyramid-chart',
                 width: '100%',
                 height: '450',
-                
+
                 dataFormat: 'json',
                 dataSource: {
                     "chart": {
@@ -57,7 +57,7 @@ angular.module("AppManager").controller("cervezasCtrl", ["$scope", "$http", "$lo
                         "plotFillAlpha": "70",
                         "showValues": "1",
                         "plotTooltext": "$label: $value milliliters",
-                     
+
                         "showPercentValues": "1",
                         "chartLeftMargin": "40",
                         //Setting the legend visibility to true

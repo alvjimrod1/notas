@@ -13,6 +13,8 @@ angular
                 templateUrl: "integrations.html"
             }).when("/about", {
                 templateUrl: "about.html"
+            }).when("/integracionComun", {
+                templateUrl: "integracionComun.html"
             })
             /*BALTA */
             .when("/spanUnivStats", {

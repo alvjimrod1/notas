@@ -94,7 +94,7 @@ angular.module("AppManager").controller("spa_crimeCtrl", ["$scope", "$http", "$l
 
                 data: {
                     columns: [
-                        ['Alvaro'].concat(int), ['JoseEnrique'].concat(aux).concat(int2)
+                        ['Spanish Universities'].concat(int), ['Crime of Andalusia'].concat(aux).concat(int2)
 
                     ]
                 },
