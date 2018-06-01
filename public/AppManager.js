@@ -14,7 +14,8 @@ angular
             }).when("/about", {
                 templateUrl: "about.html"
             }).when("/integracionComun", {
-                templateUrl: "integracionComun.html"
+                templateUrl: "integracionComun.html",
+                controller:"integracionComunCtrl"
             })
             /*BALTA */
             .when("/spanUnivStats", {
