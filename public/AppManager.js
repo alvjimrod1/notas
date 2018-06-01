@@ -14,6 +14,7 @@ angular
             }).when("/about", {
                 templateUrl: "about.html"
             })
+            
             /*BALTA */
             .when("/spanUnivStats", {
                 templateUrl: "spanUnivStatsList.html",
