@@ -17,26 +17,28 @@ angular
                 templateUrl: "integracionComun.html",
                 controller:"integracionComunCtrl"
             })
+            
+            
             /*BALTA */
             .when("/spanUnivStats", {
-                templateUrl: "spanUnivStatsList.html",
+                templateUrl: "../Balta/spanUnivStatsList.html",
                 controller: "spanUnivStatsListCtrl"
             })
             .when("/stat/:autCommunity/:year", {
-                templateUrl: "spanUnivStatsEdit.html",
+                templateUrl: "../Balta/spanUnivStatsEdit.html",
                 controller: "spanUnivStatsEditCtrl"
             })
             .when("/spanUnivStatsGraphs", {
-                templateUrl: "spanUnivStatsGraphs.html",
+                templateUrl: "../Balta/spanUnivStatsGraphs.html",
                 controller: "spanUnivStatsGraphsCtrl"
             })
             .when("/corsIntegration", {
-                templateUrl: "corsIntegration.html",
+                templateUrl: "../Balta/corsIntegration.html",
                 controller: "corsIntegrationCtrl"
 
             })
             .when("/proxyIntegrations", {
-                templateUrl: "proxyIntegrations.html",
+                templateUrl: "../Balta/proxyIntegrations.html",
                 controller: "proxyIntegrationsCtrl"
 
 
