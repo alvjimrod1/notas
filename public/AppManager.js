@@ -11,6 +11,8 @@ angular
                 templateUrl: "analytics.html"
             }).when("/integrations", {
                 templateUrl: "integrations.html"
+            }).when("/about", {
+                templateUrl: "about.html"
             })
             /*BALTA */
             .when("/spanUnivStats", {
