@@ -4,12 +4,15 @@ angular
     .module("AppManager", ["ngRoute"])
     .config(function($routeProvider) {
         $routeProvider
-            /*BALTA */
+
             .when("/", {
                 templateUrl: "AppMenu.html"
             }).when("/analytics", {
                 templateUrl: "analytics.html"
+            }).when("/integrations", {
+                templateUrl: "integrations.html"
             })
+            /*BALTA */
             .when("/spanUnivStats", {
                 templateUrl: "spanUnivStatsList.html",
                 controller: "spanUnivStatsListCtrl"
