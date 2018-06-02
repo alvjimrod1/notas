@@ -99,6 +99,7 @@ spanUnivStatsApi.register = function(app, SpanUNivStatsdb, initialStats) {
         var dbquery = {};
         let offset = 0;
         let limit = Number.MAX_SAFE_INTEGER;
+        
 
         if (req.query.offset) {
             offset = parseInt(req.query.offset);
