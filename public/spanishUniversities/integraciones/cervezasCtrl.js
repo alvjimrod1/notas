@@ -4,7 +4,10 @@
 
 angular.module("AppManager").controller("cervezasCtrl", ["$scope", "$http", "$location", function($scope, $http, $location) {
     console.log("Graph CORS Controller Initialized!");
+    /*LOCAL*/
     // var api = "https://lcboapi.com/products?access_key=MDoyMDNkODc1OC02MDA1LTExZTgtYTA0My1kZjUxYWMxN2Q3YjE6eGlGd2hsQm4zdTVkVkl1dWExcUIzaVFPekFUSHdURkZDaXZj";
+
+
     /* HEROKU*/
     var api = "https://lcboapi.com/products?access_key=MDo0ZjY5ZWQwMi02MTkzLTExZTgtODFlYi1iMzQ2OWRkNGU4YTA6aGhBVmJMNkJkSTNuWGNJeW5GRkk2ZHo4S3FyUWZUakRnZlhY";
 
