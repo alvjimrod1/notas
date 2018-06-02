@@ -10,21 +10,23 @@ angular.module("AppManager")
 
             $http.get(univUrl).then(function(response) {
                 $scope.updatedUniv = response.data;
-           
- });
+
+            });
             $scope.updateUniv = function() {
                 if (Object.values($scope.updatedUniv).includes("")) {
                     $('#missField').modal('show');
                 }
                 else {
                     $http.put(univUrl, $scope.updatedUniv).then(function(response) {
-                        $('#changed').modal('show');
-                        //$location.path("/");
+                        //$('#changed').modal('show');
+                        window.alert("Modificado correctamente");
+                        $location.path("/spanishUniversities");
+
                     });
                 }
-               
+
             };
-           
+
 
 
         }
