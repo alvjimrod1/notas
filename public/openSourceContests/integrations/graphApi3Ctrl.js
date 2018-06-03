@@ -28,7 +28,7 @@ angular.module("AppManager").controller("GraphApi3Ctrl", ["$scope", "$http", "$r
                 var data = google.visualization.arrayToDataTable(hc_aux);
 
                 var options = {
-                    title: 'Lengths of dinosaurs, in meters',
+                    title: 'Volumen de alcohol en las cervezas',
                     legend: { position: 'none' },
                 };
 

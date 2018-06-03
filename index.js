@@ -67,14 +67,6 @@ app.use("/proxyRAR/", function(req, res) {
     req.pipe(request(url)).pipe(res);
 });
 
-app.use("/proxyRARapi3/", function(req, res) {
-
-    var url = "https://api.punkapi.com/" + req.url;
-
-    console.log('piped: ' + req.url);
-    req.pipe(request(url)).pipe(res);
-});
-
 /*----------*/
 /* API SPANISH UNIVERSITIES */
 
@@ -283,7 +275,7 @@ var initialStats = [
 var initialProjects = [{
         "university": "Universidad de Sevilla",
         "year": 2017,
-        "autCommunity": "Andalucia",
+        "autCommunity": "ES-AN",
         "city": "Sevilla",
         "description": "Medición de energía de uno o varios dispositivos de una vivienda, en tiempo real, haciendo uso de microcontroladores de bajo coste. Control remoto a través de una app móvil Android. Procesado de datos en tiempo real en una aplicación web",
         "project": "Arducontrol",
@@ -294,7 +286,7 @@ var initialProjects = [{
     {
         "university": "Universidad de Sevilla",
         "year": 2016,
-        "autCommunity": "Andalucia",
+        "autCommunity": "ES-AN",
         "city": "Sevilla",
         "description": "Utilidad para hacer una instalación de forma cómoda y rápida (al estilo windows) de programas a partir del código fuente",
         "project": "AutoUPI",
@@ -309,7 +301,7 @@ var initialProjects = [{
     {
         "university": "Universidad de La Laguna",
         "year": 2017,
-        "autCommunity": "Canarias",
+        "autCommunity": "ES-CN",
         "city": "Santa Cruz de Tenerife",
         "description": "The main goal of BigHelper is to provide an easy-to-use tool to work in a Big Data environment, in order to give the possibility to perform Business Intelligence matters by non-technical users.",
         "project": "BigHelper",
@@ -320,7 +312,7 @@ var initialProjects = [{
     {
         "university": "Universidad de La Laguna",
         "year": 2017,
-        "autCommunity": "Canarias",
+        "autCommunity": "ES-CN",
         "city": "Santa Cruz de Tenerife",
         "description": "Aplicación de interacción para personas con dificultades que les impidan la comunicación. Servirá como intermediario para comunicarse usando estructuras elementales, así como para transmitir algunas necesidades básicas, emociones, sensaciones,...",
         "project": "Bring it out",
@@ -329,17 +321,96 @@ var initialProjects = [{
         }]
     },
     {
-        "university": "Universidad Politécnica de Madrid",
-        "year": 2017,
-        "autCommunity": "Madrid",
-        "city": "Madrid",
-        "description": "DiedricoApp es una aplicación Android para enseñar diédrico a los alumnos de Bachillerato. El objetivo es potenciar la vista espacial con animaciones interactivas, con material de la asignatura, y con funciones especiales para dispositivos móviles.",
-        "project": "DiedricoAPP",
+        "university": "Universidad de Granada",
+        "year": 2016,
+        "autCommunity": "ES-AN",
+        "city": "Granada",
+        "description": "Desarrollaremos una aplicación web con un framework de alto nivel denominado Django(usado en la asignatura DAI), donde podrán usarlo varios usuarios al mismo tiempo.",
+        "project": "ALJALO PROJECT",
         "team": [{
-            "member": "Francisco Jesús Acién Pérez"
+            "member": "Alberto Romero Cañadas"
+        }]
+    },
+    {
+        "university": "Universidad de La Laguna",
+        "year": 2016,
+        "autCommunity": "ES-CN",
+        "city": "Santa Cruz de Tenerife",
+        "description": "Sistema de control de acceso basado en pin numérico utilizando dos arduinos que se comunican de forma inalámbrica",
+        "project": "ArduLock",
+        "team": [{
+            "member": "Javier Herrera Serpa"
+        }]
+    },
+    {
+        "university": "Universidad de Sevilla",
+        "year": 2016,
+        "autCommunity": "ES-AN",
+        "city": "Sevilla",
+        "description": "Herramienta web de gestión y automatización para el despliegue de infraestructuras basadas proyectos libres.",
+        "project": "Autómate",
+        "team": [{
+            "member": "José María Caballero Alba"
+        }]
+    },
+    {
+        "university": "Universidad de Granada",
+        "year": 2015,
+        "autCommunity": "ES-AN",
+        "city": "Granada",
+        "description": "Consolidación y ampliación de las dos herramientas de daf-collage.eu1: Cuaderno Digital y Generador de Ejercicios para la enseñanza-aprendizaje del alemán, español e inglés, así como el desarrollo de la accesibilidad para ciegos.",
+        "project": "daf-collage.eu",
+        "team": [{
+            "member": "Salim Tieb Mohamedi"
+        }]
+    },
+    {
+        "university": "Universidad de La Laguna",
+        "year": 2015,
+        "autCommunity": "ES-CN",
+        "city": "Santa Cruz de Tenerife",
+        "description": "Animate Them es un programa que te permite animar cualquier cosa, desde dibujos hechos a mano ( lápiz del smartphone por ejemplo ) hasta combinar diferentes vídeos con una alta posibilidad de modificación y personalización. ",
+        "project": "Animate Them",
+        "team": [{
+            "member": "Rudolf Cicko"
+        }]
+    },
+    {
+        "university": "Universidad de Cádiz",
+        "year": 2014,
+        "autCommunity": "ES-AN",
+        "city": "Cadiz",
+        "description": "Proyecto enmarcado en el análisis de repositorios. El programa extraerá información de diversas forjas de considerable magnitud para su posterior análisis en una base de datos.",
+        "project": "Abreforjas",
+        "team": [{
+            "member": "Ignacio Traverso Ribón"
+        }]
+    },
+    {
+        "university": "Universidad de Granada",
+        "year": 2014,
+        "autCommunity": "ES-AN",
+        "city": "Granada",
+        "description": "Se pretende ampliar la aplicación SWADroid, un cliente móvil para acceder a algunas funcionalidades de la plataforma SWAD en dispositivos móviles Android.",
+        "project": "Ampliación de SWADroid",
+        "team": [{
+            "member": "Jose Antonio Guerrero Avilés"
+        }]
+    },
+    {
+        "university": "Universidad de Zaragoza",
+        "year": 2014,
+        "autCommunity": "ES-AR",
+        "city": "Teruel",
+        "description": "Aplicación web para protectoras de animales.",
+        "project": "Androcles",
+        "team": [{
+            "member": "Enrique Matías Sánchez"
         }]
     }
-]
+    
+    
+    ]
 
 
 MongoClient.connect(mdbSpanUnivStatsURL, { native_parser: true }, (err, mlabs) => {
