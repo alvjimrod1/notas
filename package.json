@@ -4,8 +4,8 @@
   "description": "my first module in NodeJS",
   "main": "index.js",
   "scripts": {
-    "pretest": "test/spanishUniversitiesTests/runPhantomjs.sh ; test/spanUnivStats/runPhantomjs.sh",
-    "test": "protractor test/spanishUniversitiesTests/config.js ; protractor test/spanUnivStats/config.js",
+    "pretest": "test/spanishUniversitiesTests/runPhantomjs.sh ; test/spanUnivStats/runPhantomjs.sh;  test/openSourceContests/runPhantomjs.sh",
+    "test": "protractor test/spanishUniversitiesTests/config.js ; protractor test/spanUnivStats/config.js ; protractor test/openSourceContests/config.js",
     "posttest": "killall phantomjs",
     "start": "nodemon index.js"
   },

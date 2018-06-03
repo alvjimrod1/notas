@@ -1,0 +1,378 @@
+{
+	"info": {
+		"_postman_id": "7b54c09c-5416-4d18-b06a-7aa2a0d212e1",
+		"name": "SOS1718-09-open-source-contests V2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "recurso raiz",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "810e1737-7a3c-4324-9304-354eee9c543a",
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"tests[\"Array should be 5\"] = (jsonData.length >= 5);",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "https://sos1718-09.herokuapp.com/api/v2/open-source-contests/"
+			},
+			"response": []
+		},
+		{
+			"name": "nuevo recurso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d43d3f91-74a9-4ed3-a629-505dfd142e5e",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"university\": \"Universidad de Sevilla\",\n    \"year\": 2017,\n    \"aut-community\": \"Andalucia\",\n    \"city\": \"Sevilla\",\n    \"description\": \"Aplicación web para el aprendizaje de la metodología Design Thinking.\",\n    \"project\": \"Aprende Design Thinking\",\n    \"team\": [\n        {\n            \"member\": \"Raúl Manuel Barreiros Fernández\"\n        }\n    ]\n}"
+				},
+				"url": "https://sos1718-09.herokuapp.com/api/v2/open-source-contests/"
+			},
+			"response": []
+		},
+		{
+			"name": "nuevo recurso Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6ac90739-fe20-40dc-ae30-ba89b7a5836f",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 409\", function () {",
+							"    pm.response.to.have.status(409);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"university\": \"Universidad de Sevilla\",\n    \"year\": 2017,\n    \"aut-community\": \"Andalucia\",\n    \"city\": \"Sevilla\",\n    \"description\": \"Aplicación web para el aprendizaje de la metodología Design Thinking.\",\n    \"project\": \"Aprende Design Thinking\",\n    \"team\": [\n        {\n            \"member\": \"Raúl Manuel Barreiros Fernández\"\n        }\n    ]\n}"
+				},
+				"url": "https://sos1718-09.herokuapp.com/api/v2/open-source-contests/"
+			},
+			"response": []
+		},
+		{
+			"name": "Post campos incompletos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fbe8bc41-315c-464a-bc50-69a6b0ac9d0d",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"university\": \"Universidad de Sevilla\",\n    \"year\": 2017,\n    \"aut-community\": \"Andalucia\",\n    \"project\": \"Aprende Design Thinking2\",\n    \"team\": [\n        {\n            \"member\": \"Raúl Manuel Barreiros Fernández\"\n        }\n    ]\n}"
+				},
+				"url": "https://sos1718-09.herokuapp.com/api/v2/open-source-contests/"
+			},
+			"response": []
+		},
+		{
+			"name": "recurso concreto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4f77eb1b-1d10-46a3-957f-86386830264a",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "https://sos1718-09.herokuapp.com/api/v2/open-source-contests/2017/Universidad de Sevilla/Aprende Design Thinking"
+			},
+			"response": []
+		},
+		{
+			"name": "modifica recurso",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9bb5f7f4-a45f-401d-a094-d8a2e8a5b902",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"university\": \"Universidad de Sevilla\",\n    \"year\": 2017,\n    \"aut-community\": \"Andalucia\",\n    \"city\": \"Sevilla\",\n    \"description\": \"Descripcion cambiada.\",\n    \"project\": \"Aprende Design Thinking\",\n    \"team\": [\n        {\n            \"member\": \"Cambio Barreiros Fernández\"\n        }\n    ]\n}"
+				},
+				"url": "https://sos1718-09.herokuapp.com/api/v2/open-source-contests/2017/Universidad de Sevilla/Aprende Design Thinking"
+			},
+			"response": []
+		},
+		{
+			"name": "modifica recurso Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f33917f2-0631-4342-8cf2-a27f3e59d77e",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"university\": \"Universidad de Sevilla\",\n    \"year\": 2017,\n    \"aut-community\": \"Andalucia\",\n    \"city\": \"Sevilla\",\n    \"description\": \"Descripcion cambiada.\",\n    \"project\": \"Aprendg\",\n    \"team\": [\n        {\n            \"member\": \"Cambio Barreiros Fernández\"\n        }\n    ]\n}"
+				},
+				"url": "https://sos1718-09.herokuapp.com/api/v2/open-source-contests/2017/Universidad de Sevilla/Aprende Design Thinking"
+			},
+			"response": []
+		},
+		{
+			"name": "recurso raiz (fail)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f4af2c3e-aa70-4403-a33d-836097db9585",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {",
+							"    pm.response.to.have.status(405);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"url": "https://sos1718-09.herokuapp.com/api/v2/open-source-contests/"
+			},
+			"response": []
+		},
+		{
+			"name": "recurso concreto (fail)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ea52710c-b503-4bd2-b6a5-cc81c8f207a2",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {",
+							"    pm.response.to.have.status(405);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"url": "https://sos1718-09.herokuapp.com/api/v2/open-source-contests/2017/Universidad de Sevilla/Aprende Design Thinking"
+			},
+			"response": []
+		},
+		{
+			"name": "borra recurso concreto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e9e65978-5cdb-413f-a0bb-f871d48a28ce",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": "https://sos1718-09.herokuapp.com/api/v2/open-source-contests/2017/Universidad de Sevilla/Aprende Design Thinking"
+			},
+			"response": []
+		},
+		{
+			"name": "recurso raiz",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9c7cd63d-012f-4e64-9083-3bbcf0d9112a",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\":\"Cabesa\",\n  \"code\":\"123\",\n  \"hectares\":\"111\"\n}"
+				},
+				"url": "https://sos1718-09.herokuapp.com/api/v2/open-source-contests/"
+			},
+			"response": []
+		},
+		{
+			"name": "Not found",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "30571884-6e69-4957-8ab6-63be88a9dfe9",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"pm.response.to.have.status(404);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "https://sos1718-09.herokuapp.com/api/v2/open-source-contests/2017/Universidad de Sevilla/Aprende Design Thinking"
+			},
+			"response": []
+		},
+		{
+			"name": "https://sos1718-09.herokuapp.com/api/v2/open-source-contests/loadInitialData",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": "https://sos1718-09.herokuapp.com/api/v2/open-source-contests/loadInitialData"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "947e1dfa-02d7-4efa-a0db-95456e06e28a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "04badb2f-2a08-44ef-90cc-e3e5df05df76",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

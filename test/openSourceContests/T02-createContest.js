@@ -11,10 +11,10 @@ function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min;
 }
 
-describe('Add stat', function() {
-    it('should add a new stat', function() {
+describe('Add contest', function() {
+    it('should add a new contest', function() {
         browser
-            .get('https://sos171809rar-sos171809rar.c9users.io/openSourceContests/#!/')
+            .get('https://sos171809rar-sos171809rar.c9users.io/#!/openSourceContests/')
             .then(function() {
                     element.all(by.repeater('contest in contest')).then(function(initialStats) {
 
