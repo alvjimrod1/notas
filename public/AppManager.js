@@ -117,5 +117,11 @@ angular
             }).when("/openSourceContestsPROXY/", {
                 templateUrl: "../openSourceContests/graph/graphApi2.html",
                 controller: "GraphApi2Ctrl"
+            }).when("/openSourceContests/graph3/", {
+                templateUrl: "../openSourceContests/integrations/graphApi3.html",
+                controller: "GraphApi3Ctrl"
+            }).when("/openSourceContests/graph4/", {
+                templateUrl: "../openSourceContests/integrations/graphApi4.html",
+                controller: "GraphApi4Ctrl"
             });
     });
