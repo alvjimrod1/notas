@@ -50,8 +50,8 @@ angular.module("AppManager").controller("integracionComunCtrl", ["$scope", "$htt
             total.push([comunidades[i], cont]);
         }
 
-        console.log("TOTAL:",total);
-        
+        console.log("TOTAL:", total);
+
 
 
 
@@ -82,24 +82,41 @@ angular.module("AppManager").controller("integracionComunCtrl", ["$scope", "$htt
 
 
 
-            console.log("LIST:",list);
+            console.log("LIST:", list);
 
 
 
             /*API RAFA */
 
-            $http.get(apiRafa).then(function() {
+            $http.get(apiRafa).then(function(response) {
 
+                var cusl_aux = [];
+                for (var i = 0; i < list.length; i++) {
+                    cusl_aux.push(null);
+                }
+                var autCommunitys = [];
 
+                response.data.forEach((obj) => {
+                    autCommunitys.push(obj.autCommunity);
+                });
 
+                autCommunitys = autCommunitys.unique()
 
+                var aut_total = Array.apply(null, new Array(autCommunitys.length)).map(Number.prototype.valueOf, 0);
 
-        
+                response.data.forEach((obj) => {
+                    aut_total[autCommunitys.indexOf(obj.autCommunity)]++;
+                });
+
+                aut_total = cusl_aux.concat(aut_total)
+
                 /*CHART */
-                
-                provincesTotal = comunidades.concat(listCom);
+
+                provincesTotal = comunidades.concat(listCom).concat(autCommunitys);
                 console.log(provincesTotal);
-                
+                console.log(list)
+
+
                 var myChart = {
                     "type": "scatter",
                     "title": {
@@ -136,7 +153,13 @@ angular.module("AppManager").controller("integracionComunCtrl", ["$scope", "$htt
                             "values": list,
                             "text": "SpanUnivStats",
                             "palette": 1
-                        }
+                        },
+                        {
+                            "values": aut_total,
+                            "text": "SpanUnivStats",
+                            "palette": 2
+                        },
+                        
                     ]
                 };
                 zingchart.render({

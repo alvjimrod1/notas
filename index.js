@@ -69,7 +69,7 @@ app.use("/proxyRAR/", function(req, res) {
 
 app.use("/proxyRARapi3/", function(req, res) {
 
-    var url = "http://samples.openweathermap.org" + req.url;
+    var url = "https://api.punkapi.com/" + req.url;
 
     console.log('piped: ' + req.url);
     req.pipe(request(url)).pipe(res);
