@@ -242,6 +242,8 @@ angular.module("AppManager").controller("notasGraphCtrl", ["$scope", "$http", "$
         }
         notaMediaC = sumc / conCarlosTotal.length;
         notaMediaS = sums / sinCarlosTotal.length;
+        console.log("AQUI ES LA NOTA MEDIA")
+        console.log(notaMediaC.toPrecision(3))
 
         var chart = AmCharts.makeChart("chartdiv", {
             "type": "serial",
@@ -255,12 +257,12 @@ angular.module("AppManager").controller("notasGraphCtrl", ["$scope", "$http", "$
             },
             "dataProvider": [{
                 "year": "Con carlos",
-                "namerica": notaMediaC,
+                "namerica": notaMediaC.toPrecision(3),
 
 
             }, {
                 "year": "Sin carlos",
-                "lamerica": notaMediaS,
+                "lamerica": notaMediaS.toPrecision(3),
 
             }],
             "valueAxes": [{
