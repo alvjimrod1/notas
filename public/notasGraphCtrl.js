@@ -2,12 +2,12 @@
 /* global Highcharts */
 /* global c3 */
 
-angular.module("AppManager").controller("tiempoCtrl", ["$scope", "$http", "$location", function($scope, $http, $location) {
+angular.module("AppManager").controller("notasGraphCtrl", ["$scope", "$http", "$location", function($scope, $http, $location) {
     console.log("Graph CORS Controller Initialized!");
     //var api = "https://simple-weather.p.mashape.com/weatherdata?lat=" + 37.3890924 + "&lng=" + -5.984458899999936;
 
     var chart = AmCharts.makeChart("chartdiv", {
-        "theme": "black",
+        "theme": "light",
         "type": "serial",
 
         "valueAxes": [{
@@ -85,7 +85,7 @@ angular.module("AppManager").controller("tiempoCtrl", ["$scope", "$http", "$loca
         console.log("Latitud : " + $scope.lat);
         console.log("Longitud" + $scope.long);
 
-        var api = "https://sandbox-sos171809ajr.c9users.io/api/v1/notas" + $scope.lat + "&lng=" + $scope.long;
+        var api = "https://simple-weather.p.mashape.com/weatherdata?lat=" + $scope.lat + "&lng=" + $scope.long;
         $http.get(api, {
             headers: {
                 "X-Mashape-Key": "1wmUJApusomshUshD2AY4GWO99zmp1dlvsnjsnxMDssqZ9E86u",
@@ -93,7 +93,8 @@ angular.module("AppManager").controller("tiempoCtrl", ["$scope", "$http", "$loca
             }
         }).then(function(response) {
 
-          
+            console.log(response.data.query.results.channel.item.forecast);
+
 
             var res = [];
             var responseData = response.data.query.results.channel.item.forecast;
@@ -102,20 +103,14 @@ angular.module("AppManager").controller("tiempoCtrl", ["$scope", "$http", "$loca
             });
             var a = [];
             for (var i = 0; i < res.length; i++) {
+                // if (res[i][0] == "Onroll")
                 a.push({ "date": res[i][0], "min": res[i][2], "max": res[i][1] });
             }
 
 
-    
-    console.log(response.data)
-
-
-
-
-
             /* ESPACIO PARA IMPLEMENTAR LA CHART*/
             var chart = AmCharts.makeChart("chartdiv", {
-                "theme": "black",
+                "theme": "light",
                 "type": "serial",
                 "dataProvider": a,
                 "valueAxes": [{
@@ -143,7 +138,7 @@ angular.module("AppManager").controller("tiempoCtrl", ["$scope", "$http", "$loca
                 "plotAreaFillAlphas": 0.1,
                 "depth3D": 60,
                 "angle": 30,
-                "categoryField": "country",
+                "categoryField": "date",
                 "categoryAxis": {
                     "gridPosition": "start"
                 },

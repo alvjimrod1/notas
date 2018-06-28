@@ -7,8 +7,14 @@ angular
             .when("/", {
                 templateUrl: "notasList.html",
                 controller: "notasListCtrl"
-            }).when("/analytics", {
-                templateUrl: "analytics.html"
+            })
+            .when("/:asignatura/:anyo", {
+                templateUrl: "notasEdit.html",
+                controller: "notasEditCtrl"
+            })
+            .when("/graphs", {
+                templateUrl: "notasGraph.html",
+                contoller: "notasGraphCtrl"
                 /*ALVARO*/
             });
     });
