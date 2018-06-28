@@ -4,7 +4,7 @@ angular
     .config(function($routeProvider) {
         $routeProvider
 
-            .when("/", {
+            .when("/data", {
                 templateUrl: "notasList.html",
                 controller: "notasListCtrl"
             })
@@ -12,7 +12,7 @@ angular
                 templateUrl: "notasEdit.html",
                 controller: "notasEditCtrl"
             })
-            .when("/graphs", {
+            .when("/", {
                 templateUrl: "notasGraph.html",
                 controller: "notasGraphCtrl"
 
