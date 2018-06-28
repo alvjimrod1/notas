@@ -1,7 +1,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
-
+var cors = require("cors");
 
 var MongoClient = require("mongodb").MongoClient;
 
@@ -12,7 +12,7 @@ var mdbnotas = "mongodb://alvjimrod1:alvjimrod1@ds121251.mlab.com:21251/notas";
 var app = express();
 
 app.use(bodyParser.json());
-
+app.use(cors());
 app.use("/", express.static(path.join(__dirname, "public")));
 
 var notasApi = require("./api");
@@ -27,7 +27,7 @@ MongoClient.connect(mdbnotas, { useNewUrlParser: true }, (err, mlabs) => {
 
     var notasDatabase = mlabs.db("notas");
     var notasdb = notasDatabase.collection("notas");
-    
+
     notasApi.register(app, notasdb);
 
     console.log("Conected to  notas DB");
