@@ -14,7 +14,12 @@ angular
             })
             .when("/graphs", {
                 templateUrl: "notasGraph.html",
-                contoller: "notasGraphCtrl"
-                /*ALVARO*/
+                controller: "notasGraphCtrl"
+
+            })
+            .when("/graphs1", {
+                templateUrl: "pa.html",
+                controller: "notasGraphCtrl"
+
             });
     });
