@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/styles_css/css_alvaro/css_alvaro.css" type="text/css" />
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="/#!/spanishUniversities/">Spanish Universities</a>
+    <a class="navbar-brand" href="/#!/">Notas de Alvaro</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -13,15 +13,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="/#!/spanishUniversitiesGraphs">Analytics</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/#!/spanishUniversitiesCORS">Integraciones</a>
-            </li>
+            
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-
-            <button class="btn btn-secondary my-2 my-sm-0" ng-click="searchUniversity1()">Search</button>
-
-        </form>
+       
     </div>
 </nav>
 
@@ -29,54 +23,40 @@
 
     <thead>
         <tr>
-            <th>Autonomous Community<a target="_blank" title="Check the codes of autonomous communities in wikipedia!" href="https://en.wikipedia.org/wiki/ISO_3166-2:ES"><img src=/spanishUniversities/images_alvaro/info2.png width="10" height="10"></a></th>
-            <th>Year Fundation</th>
-            <th>Headquarters</th>
-            <th>Type</th>
-            <th>University name</th>
-
+            <th>Año</th>
+            <th>Trimestre</th>
+            <th>Asignatura</th>
+            <th>Nota</th>
+            
         </tr>
     </thead>
     <tbody>
 
         <tr>
-            <td><input class="form-control" placeholder="ej: ES-AN" ng-model="newUniv.autCommunity" /></td>
-            <td><input class="form-control" placeholder="ej: 1505" ng-model="newUniv.yearFund" /></td>
-            <td><input class="form-control" placeholder="ej: Sevilla" ng-model="newUniv.headquar" /></td>
-            <td><input class="form-control" placeholder="ej: publica" ng-model="newUniv.type" /></td>
-            <td><input class="form-control" placeholder="ej: Universidad de sevilla" ng-model="newUniv.nameUniversity" /></td>
+            <td><input class="form-control" placeholder="ej: 2013" ng-model="newUniv.anyo" /></td>
+            <td><input class="form-control" placeholder="ej: 1" ng-model="newUniv.trimestre" /></td>
+            <td><input class="form-control" placeholder="ej: GSI" ng-model="newUniv.asignatura" /></td>
+            <td><input class="form-control" placeholder="ej: nota" ng-model="newUniv.nota" /></td>
+          
             <td><button class="button btn-outline-success btn-lg" ng-click="addUniv()"> Add</button></td>
 
         </tr>
         <tr ng-repeat="univ in univs">
-            <td><a href="/#!/univ/{{univ.autCommunity}}/{{univ.yearFund}}">{{univ.autCommunity}}</a></td>
-            <td>{{univ.yearFund}}</td>
-            <td>{{univ.headquar}}</td>
-            <td>{{univ.type}}</td>
-            <td>{{univ.nameUniversity}}</td>
+            <td>{{univ.anyo}}</td>
+            <td>{{univ.trimestre}}</td>
+            <td>{{univ.asignatura}}</td>
+            <td>{{univ.nota}}</td>
 
             <td>
-                <button class="btn btn-outline-primary btn-sm" ng-click="deleteUniv(univ.autCommunity,univ.yearFund)">Delete</button>
+                <button class="btn btn-outline-primary btn-sm" ng-click="deleteUniv(univ.asignatura)">Delete</button>
             </td>
         </tr>
     </tbody>
 
 
 </table>
-<div>
-    <ul class="pagination">
-        <button class="btn btn-outline-secondary" ng-click="previousPage()"><i>Previous Page</i></button>
-        <button class="btn btn-outline-secondary" ng-click="nextPage()"><i>Next Page</i></button>
-
-    </ul>
-</div>
-
-
-
 
 <button ng-click="deleteAllUnivs() " class="btn btn-primary btn-sm">Delete all</button>
-<button ng-click="loadInitialData() " class="btn btn-warning btn-sm">Load Initial Data</button>
-
 
 
 

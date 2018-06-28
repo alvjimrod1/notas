@@ -24,7 +24,7 @@
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "express": "^4.16.2",
-    "mongodb": "^3.0.5",
+    "mongodb": "~3.0.8",
     "nedb": "^1.8.0",
     "newman": "^3.9.4",
     "nodemon": "^1.17.3",
