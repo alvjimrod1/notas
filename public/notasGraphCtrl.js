@@ -225,6 +225,84 @@ angular.module("AppManager").controller("notasGraphCtrl", ["$scope", "$http", "$
 
         console.log(suspensoss)
 
+
+        var sumc = 0.;
+        var sums = 0.;
+        var notaMediaC = 0.;
+        var notaMediaS = 0.;
+
+
+        for (var i = 0; i < conCarlosTotal.length; i++) {
+            sumc += parseFloat(conCarlosTotal[i]);
+
+        }
+
+        for (var i = 0; i < sinCarlosTotal.length; i++) {
+            sums += parseFloat(sinCarlosTotal[i])
+        }
+        notaMediaC = sumc / conCarlosTotal.length;
+        notaMediaS = sums / sinCarlosTotal.length;
+
+        var chart = AmCharts.makeChart("chartdiv", {
+            "type": "serial",
+            "theme": "light",
+            "depth3D": 20,
+            "angle": 30,
+            "legend": {
+                "horizontalGap": 10,
+                "useGraphSettings": true,
+                "markerSize": 10
+            },
+            "dataProvider": [{
+                "year": "Con carlos",
+                "namerica": notaMediaC,
+
+
+            }, {
+                "year": "Sin carlos",
+                "lamerica": notaMediaS,
+
+            }],
+            "valueAxes": [{
+                "stackType": "regular",
+                "axisAlpha": 0,
+                "gridAlpha": 0
+            }],
+            "graphs": [{
+                "balloonText": "<b>[[title]]</b><br><span style='font-size:14px'>[[category]]: <b>[[value]]</b></span>",
+                "fillAlphas": 0.8,
+                "labelText": "[[value]]",
+                "lineAlpha": 0.3,
+                "title": "Con Carlos",
+                "type": "column",
+                "color": "#000000",
+                "valueField": "namerica"
+            }, {
+                "balloonText": "<b>[[title]]</b><br><span style='font-size:14px'>[[category]]: <b>[[value]]</b></span>",
+                "fillAlphas": 0.8,
+                "labelText": "[[value]]",
+                "lineAlpha": 0.3,
+                "title": "Sin Carlos",
+                "type": "column",
+                "color": "#000000",
+                "valueField": "lamerica"
+            }],
+            "categoryField": "year",
+            "categoryAxis": {
+                "gridPosition": "start",
+                "axisAlpha": 0,
+                "gridAlpha": 0,
+                "position": "left"
+            },
+            "export": {
+                "enabled": true
+            }
+
+        });
+
+
+
+
         Highcharts.chart('container2', {
             chart: {
                 plotBackgroundColor: null,
@@ -308,6 +386,56 @@ angular.module("AppManager").controller("notasGraphCtrl", ["$scope", "$http", "$
                     sliced: true,
                     selected: true
                 }]
+            }]
+        });
+
+
+
+
+        Highcharts.chart('container4', {
+
+            chart: {
+                type: 'column'
+            },
+
+            title: {
+                text: 'Total fruit consumtion, grouped by gender'
+            },
+
+            xAxis: {
+                categories: ['Con Carlos', 'Sin Carlos']
+            },
+
+            yAxis: {
+                allowDecimals: false,
+                min: 0,
+                title: {
+                    text: 'Number of fruits'
+                }
+            },
+
+            tooltip: {
+                formatter: function() {
+                    return '<b>' + this.x + '</b><br/>' +
+                        this.series.name + ': ' + this.y + '<br/>' +
+                        'Total: ' + this.point.stackTotal;
+                }
+            },
+
+            plotOptions: {
+                column: {
+                    stacking: 'normal'
+                }
+            },
+
+            series: [{
+                name: 'Con Carlos',
+                data: [5.2],
+                stack: 'male'
+            }, {
+                name: 'Sin Carlos',
+                data: [7.5],
+                stack: 'female'
             }]
         });
 

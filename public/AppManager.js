@@ -21,5 +21,10 @@ angular
                 templateUrl: "pa.html",
                 controller: "notasGraphCtrl"
 
+            })
+            .when("/graphs2", {
+                templateUrl: "total.html",
+                controller: "notasGraphCtrl"
+
             });
     });
