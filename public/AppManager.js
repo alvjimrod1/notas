@@ -26,5 +26,9 @@ angular
                 templateUrl: "total.html",
                 controller: "notasGraphCtrl"
 
+            }).when("/graphs3", {
+                templateUrl: "final.html",
+                controller: "finalCtrl"
+
             });
     });
